@@ -8,6 +8,11 @@ import {
   TMasterDataUnderlying
 } from '../../TYPES/Store'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns
+ */
 export const isinCodeIndexHandler = (): TIndexHandler<TIsinCodeIndex> => {
   const index: TIsinCodeIndex = {}
 

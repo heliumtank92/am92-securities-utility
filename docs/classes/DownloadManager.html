@@ -123,6 +123,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>${1:Description placeholder}</p>
+
+            </p>
 
 
 
@@ -172,12 +179,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/Download/DownloadManager.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/Download/DownloadManager.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of DownloadManager.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -245,10 +254,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/Download/DownloadManager.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/Download/DownloadManager.ts:52</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -270,11 +285,36 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/Download/DownloadManager.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/Download/DownloadManager.ts:41</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>event</td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
         </tbody>
     </table>
     <table class="table table-sm table-bordered">
@@ -296,10 +336,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/Download/DownloadManager.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/Download/DownloadManager.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -315,40 +361,60 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { addStore } from &quot;../store&quot;;
-import { IConfig } from &quot;../TYPES/Config&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { addStore } from &#x27;../store&#x27;
+import { IConfig } from &#x27;../TYPES/Config&#x27;
 
 // TODO: move this to another file
+/** ${1:Description placeholder} */
 type TMessageEvent &#x3D; {
-  action: string;
-  data?: any;
-};
+  action: string
+  data?: any
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @class
+ */
 export default class DownloadManager {
-  worker: any;
+  /** ${1:Description placeholder} */
+  worker: any
+  /**
+   * Creates an instance of DownloadManager.
+   *
+   * @constructor
+   * @param secMasterURL
+   * @param config
+   */
   constructor(secMasterURL: string, config: IConfig) {
-    this.worker &#x3D; new Worker(new URL(&quot;./DownloadWorker.js&quot;, import.meta.url), {
-      type: &quot;module&quot;,
-    });
+    this.worker &#x3D; new Worker(new URL(&#x27;./DownloadWorker.js&#x27;, import.meta.url), {
+      type: &#x27;module&#x27;
+    })
 
-    this.worker.postMessage({ action: &quot;INIT&quot;, data: { config, secMasterURL } });
-    this.worker.onmessage &#x3D; this.onMessage;
-    this.worker.onerror &#x3D; this.onError;
+    this.worker.postMessage({ action: &#x27;INIT&#x27;, data: { config, secMasterURL } })
+    this.worker.onmessage &#x3D; this.onMessage
+    this.worker.onerror &#x3D; this.onError
   }
 
+  /**
+   * ${1:Description placeholder}
+   *
+   * @param event
+   */
   onMessage &#x3D; (event: MessageEvent&lt;TMessageEvent&gt;) &#x3D;&gt; {
-    const { action } &#x3D; event.data;
-    if (action &#x3D;&#x3D;&#x3D; &quot;INDEXES_CREATED&quot;) {
-      const masterDataWithIndexes &#x3D; event.data?.data;
+    const { action } &#x3D; event.data
+    if (action &#x3D;&#x3D;&#x3D; &#x27;INDEXES_CREATED&#x27;) {
+      const masterDataWithIndexes &#x3D; event.data?.data
       // REVIEW: add to store - remove this console
-      console.log(event.data, &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;);
-      addStore(masterDataWithIndexes);
+      console.log(event.data, &#x27;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#x27;)
+      addStore(masterDataWithIndexes)
     }
-  };
+  }
 
+  /** ${1:Description placeholder} */
   onError &#x3D; () &#x3D;&gt; {
-    console.log(&quot;error&quot;);
-  };
+    console.log(&#x27;error&#x27;)
+  }
 }
 </code></pre>
     </div>

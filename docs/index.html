@@ -119,11 +119,12 @@
 const SEC_MASTER_URL = process.env.SEC_MASTER_URL; // URL for downloading the sec master (can be environment-specific)
 
 // Initialize the sec master
-initialize(SEC_MASTER_URL).then(() =&gt; {
+try {
+  initialize(SEC_MASTER_URL)
   console.log(&#39;Sec master initialization successful.&#39;);
-}).catch(error =&gt; {
+} catch (error) {
   console.error(&#39;Sec master initialization failed:&#39;, error);
-});</code></pre></div><ol start="2">
+}</code></pre></div><ol start="2">
 <li><h4>Include the File in <code>index.html</code></h4>
 Add the following script tag to your index.html to include the file:</li>
 </ol>

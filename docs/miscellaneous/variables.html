@@ -242,28 +242,34 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(
-  scriptId: TScript[&quot;scriptId&quot;],
+  scriptId: TScript[&#x27;scriptId&#x27;],
   populate?: TScriptPopulate
 ) &#x3D;&gt; {
-  const scriptIdIndex &#x3D; getScripIndex();
+  const scriptIdIndex &#x3D; getScripIndex()
 
   if (!scriptIdIndex) {
     // TODO: Beautify
-    console.warn(&quot;ScriptIdIndex not found in store&quot;);
-    return;
+    console.warn(&#x27;ScriptIdIndex not found in store&#x27;)
+    return
   }
 
-  const locations &#x3D; scriptIdIndex[scriptId];
+  const locations &#x3D; scriptIdIndex[scriptId]
 
   if (!locations) {
-    return;
+    return
   }
 
-  return getScriptByScriptIdIndexValue(locations, populate);
+  return getScriptByScriptIdIndexValue(locations, populate)
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -281,21 +287,27 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(masterDataSegment: MASTER_DATA_SEGMENTS) &#x3D;&gt; {
-  const [exchange, segment, instrumentType] &#x3D; masterDataSegment.split(&quot;_&quot;) as [
-    TScript[&quot;exchange&quot;],
-    TScript[&quot;segment&quot;],
-    TScript[&quot;instrumentType&quot;]
-  ];
-  const scriptObj: Pick&lt;TScript, &quot;segment&quot; | &quot;exchange&quot; | &quot;instrumentType&quot;&gt; &#x3D; {
+  const [exchange, segment, instrumentType] &#x3D; masterDataSegment.split(&#x27;_&#x27;) as [
+    TScript[&#x27;exchange&#x27;],
+    TScript[&#x27;segment&#x27;],
+    TScript[&#x27;instrumentType&#x27;]
+  ]
+  const scriptObj: Pick&lt;TScript, &#x27;segment&#x27; | &#x27;exchange&#x27; | &#x27;instrumentType&#x27;&gt; &#x3D; {
     segment,
     exchange,
-    instrumentType,
-  };
-  return scriptObj;
+    instrumentType
+  }
+  return scriptObj
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -315,30 +327,30 @@
                         <i>Default value : </i><code>(
   locations: TScriptIdIndexValue
 ) &#x3D;&gt; {
-  const masterData &#x3D; getMasterData();
+  const masterData &#x3D; getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn(&quot;masterData not found in store&quot;);
-    return;
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
   }
 
   const [
     masterDataSegment,
     scriptIndex,
     derivativesIndex,
-    derivativesScriptIndex,
-  ] &#x3D; locations;
+    derivativesScriptIndex
+  ] &#x3D; locations
 
   const { segment, exchange, instrumentType } &#x3D;
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataDerivatives[];
-  const flattenDerivative &#x3D; segmentData[scriptIndex];
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataDerivatives[]
+  const flattenDerivative &#x3D; segmentData[scriptIndex]
   const [exchangeSymbol, _, assetClass, flattenDerivativeScripts] &#x3D;
-    flattenDerivative;
+    flattenDerivative
   const flattenDerivativeScript &#x3D;
-    flattenDerivativeScripts[derivativesScriptIndex!];
+    flattenDerivativeScripts[derivativesScriptIndex!]
 
   if (flattenDerivativeScript) {
     const [
@@ -365,8 +377,8 @@
       dprLow,
       dprHigh,
       fiftyTwoWeekLow,
-      fiftyTwoWeekHigh,
-    ] &#x3D; flattenDerivativeScript;
+      fiftyTwoWeekHigh
+    ] &#x3D; flattenDerivativeScript
 
     const scriptObj: TScript &#x3D; {
       segment,
@@ -397,15 +409,21 @@
       dprLow,
       dprHigh,
       fiftyTwoWeekLow,
-      fiftyTwoWeekHigh,
-    };
+      fiftyTwoWeekHigh
+    }
 
-    return scriptObj;
+    return scriptObj
   }
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -423,21 +441,21 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(locations: TScriptIdIndexValue) &#x3D;&gt; {
-  const masterData &#x3D; getMasterData();
+  const masterData &#x3D; getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn(&quot;masterData not found in store&quot;);
-    return;
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
   }
 
-  const [masterDataSegment, scriptIndex] &#x3D; locations;
+  const [masterDataSegment, scriptIndex] &#x3D; locations
 
   const { segment, exchange, instrumentType } &#x3D;
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataEquity[];
-  const flattenEquityScript &#x3D; segmentData[scriptIndex];
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataEquity[]
+  const flattenEquityScript &#x3D; segmentData[scriptIndex]
 
   const [
     scriptId,
@@ -464,8 +482,8 @@
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  ] &#x3D; flattenEquityScript;
+    fiftyTwoWeekHigh
+  ] &#x3D; flattenEquityScript
 
   const scriptObj: TScript &#x3D; {
     segment,
@@ -495,14 +513,20 @@
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  };
+    fiftyTwoWeekHigh
+  }
 
-  return scriptObj;
+  return scriptObj
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -520,21 +544,21 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(locations: TScriptIdIndexValue) &#x3D;&gt; {
-  const masterData &#x3D; getMasterData();
+  const masterData &#x3D; getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn(&quot;masterData not found in store&quot;);
-    return;
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
   }
 
-  const [masterDataSegment, scriptIndex] &#x3D; locations;
+  const [masterDataSegment, scriptIndex] &#x3D; locations
 
   const { segment, exchange, instrumentType } &#x3D;
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataUnderlying[];
-  const flattenEquityScript &#x3D; segmentData[scriptIndex];
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataUnderlying[]
+  const flattenEquityScript &#x3D; segmentData[scriptIndex]
 
   const [
     scriptId,
@@ -558,8 +582,8 @@
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  ] &#x3D; flattenEquityScript;
+    fiftyTwoWeekHigh
+  ] &#x3D; flattenEquityScript
 
   const scriptObj: TScript &#x3D; {
     segment,
@@ -586,14 +610,20 @@
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  };
+    fiftyTwoWeekHigh
+  }
 
-  return scriptObj;
+  return scriptObj
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -611,74 +641,80 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(
-  scriptId: TScript[&quot;scriptId&quot;],
-  derivativeType: &quot;FUTURES&quot; | &quot;OPTIONS&quot; | &quot;BOTH&quot; &#x3D; &quot;BOTH&quot;,
+  scriptId: TScript[&#x27;scriptId&#x27;],
+  derivativeType: &#x27;FUTURES&#x27; | &#x27;OPTIONS&#x27; | &#x27;BOTH&#x27; &#x3D; &#x27;BOTH&#x27;,
   populate?: TScriptPopulate
 ) &#x3D;&gt; {
-  const script &#x3D; getScripByScripId(scriptId, populate);
+  const script &#x3D; getScripByScripId(scriptId, populate)
 
   if (!script) {
-    return {};
+    return {}
   }
 
-  const { underlying, isinCode, exchange, instrumentType } &#x3D; script;
+  const { underlying, isinCode, exchange, instrumentType } &#x3D; script
 
-  let underlyingId: TScript[&quot;underlying&quot;] &#x3D; underlying;
+  let underlyingId: TScript[&#x27;underlying&#x27;] &#x3D; underlying
   if (!underlyingId) {
-    if (exchange &#x3D;&#x3D;&#x3D; &quot;NSE&quot; &amp;&amp; instrumentType &#x3D;&#x3D;&#x3D; &quot;EQUITY&quot;) {
-      underlyingId &#x3D; scriptId;
+    if (exchange &#x3D;&#x3D;&#x3D; &#x27;NSE&#x27; &amp;&amp; instrumentType &#x3D;&#x3D;&#x3D; &#x27;EQUITY&#x27;) {
+      underlyingId &#x3D; scriptId
     }
 
     if (!isinCode) {
-      return {};
+      return {}
     }
 
-    const isinCodeIndex &#x3D; getIsinIndex();
+    const isinCodeIndex &#x3D; getIsinIndex()
     if (!isinCodeIndex) {
       // TODO: Beautify
-      console.warn(&quot;isinCodeIndex not found in store&quot;);
-      return {};
+      console.warn(&#x27;isinCodeIndex not found in store&#x27;)
+      return {}
     }
 
-    if (exchange &#x3D;&#x3D;&#x3D; &quot;BSE&quot;) {
-      const scriptIds &#x3D; isinCodeIndex &amp;&amp; isinCodeIndex[isinCode];
+    if (exchange &#x3D;&#x3D;&#x3D; &#x27;BSE&#x27;) {
+      const scriptIds &#x3D; isinCodeIndex &amp;&amp; isinCodeIndex[isinCode]
       const nseScriptId &#x3D; scriptIds.filter(
-        (scriptIdentifier) &#x3D;&gt; scriptIdentifier !&#x3D;&#x3D; scriptId
-      )[0];
-      underlyingId &#x3D; nseScriptId;
+        scriptIdentifier &#x3D;&gt; scriptIdentifier !&#x3D;&#x3D; scriptId
+      )[0]
+      underlyingId &#x3D; nseScriptId
     }
   }
 
-  const derivativesIndex &#x3D; getDerivativeIndex();
+  const derivativesIndex &#x3D; getDerivativeIndex()
   if (!derivativesIndex) {
     // TODO: Beautify
-    console.warn(&quot;derivativesIndex not found in store&quot;);
-    return {};
+    console.warn(&#x27;derivativesIndex not found in store&#x27;)
+    return {}
   }
 
   const derivativesScriptIdsObj &#x3D;
-    (underlyingId &amp;&amp; derivativesIndex[underlyingId]) || null;
+    (underlyingId &amp;&amp; derivativesIndex[underlyingId]) || null
 
   if (derivativesScriptIdsObj) {
-    if (derivativeType &#x3D;&#x3D;&#x3D; &quot;BOTH&quot;) {
+    if (derivativeType &#x3D;&#x3D;&#x3D; &#x27;BOTH&#x27;) {
       return {
         FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate),
-        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate),
-      };
-    } else if (derivativeType &#x3D;&#x3D;&#x3D; &quot;FUTURES&quot;) {
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
+    } else if (derivativeType &#x3D;&#x3D;&#x3D; &#x27;FUTURES&#x27;) {
       return {
-        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate),
-      };
+        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate)
+      }
     } else {
       return {
-        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate),
-      };
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
     }
   }
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -699,6 +735,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -716,27 +758,33 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(
-  isinCode: TScript[&quot;isinCode&quot;],
+  isinCode: TScript[&#x27;isinCode&#x27;],
   populate?: TScriptPopulate
 ) &#x3D;&gt; {
-  const isinCodeIndex &#x3D; getIsinIndex();
+  const isinCodeIndex &#x3D; getIsinIndex()
 
   if (!isinCode) {
-    return [];
+    return []
   }
 
   if (!isinCodeIndex) {
     // TODO: Beautify
-    console.warn(&quot;isinCodeIndex not found in store&quot;);
-    return;
+    console.warn(&#x27;isinCodeIndex not found in store&#x27;)
+    return
   }
 
-  const scriptIds &#x3D; isinCodeIndex[isinCode];
-  return getScripsByScripIds(scriptIds, populate);
+  const scriptIds &#x3D; isinCodeIndex[isinCode]
+  return getScripsByScripIds(scriptIds, populate)
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -754,21 +802,27 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(
-  scriptIds: TScript[&quot;scriptId&quot;][],
+  scriptIds: TScript[&#x27;scriptId&#x27;][],
   populate?: TScriptPopulate
 ) &#x3D;&gt; {
   if (!scriptIds) {
-    return [];
+    return []
   }
 
   const scripts &#x3D; scriptIds
-    .map((scriptId) &#x3D;&gt; getScripByScripId(scriptId, populate))
-    .filter((script) &#x3D;&gt; script !&#x3D;&#x3D; undefined);
-  return scripts;
+    .map(scriptId &#x3D;&gt; getScripByScripId(scriptId, populate))
+    .filter(script &#x3D;&gt; script !&#x3D;&#x3D; undefined)
+  return scripts
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -789,29 +843,35 @@
   scriptIdIndexValue: TScriptIdIndexValue,
   populate: TScriptPopulate &#x3D; []
 ): TScript | undefined | Pick&lt;TScript, TScriptPopulate[number]&gt; &#x3D;&gt; {
-  const { instrumentType } &#x3D; _getSegmentDetails(scriptIdIndexValue[0]);
+  const { instrumentType } &#x3D; _getSegmentDetails(scriptIdIndexValue[0])
 
-  let script: TScript | undefined;
-  if (instrumentType &#x3D;&#x3D;&#x3D; &quot;EQUITY&quot;) {
-    script &#x3D; _mapFlattenEquityScriptToScript(scriptIdIndexValue);
-  } else if (instrumentType &#x3D;&#x3D;&#x3D; &quot;UNDERLYING&quot;) {
-    script &#x3D; _mapFlattenUnderlingScriptToScript(scriptIdIndexValue);
+  let script: TScript | undefined
+  if (instrumentType &#x3D;&#x3D;&#x3D; &#x27;EQUITY&#x27;) {
+    script &#x3D; _mapFlattenEquityScriptToScript(scriptIdIndexValue)
+  } else if (instrumentType &#x3D;&#x3D;&#x3D; &#x27;UNDERLYING&#x27;) {
+    script &#x3D; _mapFlattenUnderlingScriptToScript(scriptIdIndexValue)
   } else {
-    script &#x3D; _mapFlattenDerivativeScriptToScript(scriptIdIndexValue);
+    script &#x3D; _mapFlattenDerivativeScriptToScript(scriptIdIndexValue)
   }
 
   if (populate.length &amp;&amp; script) {
     const scriptObj &#x3D; Object.fromEntries(
-      populate.filter((key) &#x3D;&gt; key in script).map((key) &#x3D;&gt; [key, script[key]])
-    ) as Pick&lt;TScript, keyof TScript&gt;;
-    return scriptObj;
+      populate.filter(key &#x3D;&gt; key in script).map(key &#x3D;&gt; [key, script[key]])
+    ) as Pick&lt;TScript, keyof TScript&gt;
+    return scriptObj
   }
 
-  return script;
+  return script
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -837,10 +897,16 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;x-amz-meta-md5&quot;</code>
+                        <i>Default value : </i><code>&#x27;x-amz-meta-md5&#x27;</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -861,6 +927,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -883,10 +955,16 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;ASL_SEC_MASTER&quot;</code>
+                        <i>Default value : </i><code>&#x27;ASL_SEC_MASTER&#x27;</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -910,54 +988,54 @@
   masterData: TMasterData,
   options?: IConfig
 ): {
-  scriptIdIndex: TScriptIdIndex;
-  isinCodeIndex: TIsinCodeIndex;
-  derivativesIndex: TDerivativesIndex;
-  searchStringIndex?: TSearchStringIndex;
+  scriptIdIndex: TScriptIdIndex
+  isinCodeIndex: TIsinCodeIndex
+  derivativesIndex: TDerivativesIndex
+  searchStringIndex?: TSearchStringIndex
 } &#x3D;&gt; {
   let indexHandlers: TIndexHandlers &#x3D; [
     scriptIdIndexHandler(),
     isinCodeIndexHandler(),
-    derivativesIndexHandler(),
-  ];
+    derivativesIndexHandler()
+  ]
 
   if (options &amp;&amp; options.requireSearchModule) {
     indexHandlers.push(
       searchStringIndexHandler() as TIndexHandler&lt;TSearchStringIndex&gt;
-    );
+    )
   }
 
   for (const SEC_SEGMENT of SEC_SEGMENTS) {
-    const secMasterSegmentKey &#x3D; SEC_SEGMENT.name as MASTER_DATA_SEGMENTS;
-    const segmentData &#x3D; masterData[secMasterSegmentKey];
+    const secMasterSegmentKey &#x3D; SEC_SEGMENT.name as MASTER_DATA_SEGMENTS
+    const segmentData &#x3D; masterData[secMasterSegmentKey]
 
-    if (!segmentData) continue;
+    if (!segmentData) continue
 
     if (
-      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &quot;FLAT_EQUITY&quot; ||
-      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &quot;FLAT_UNDERLYING&quot;
+      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &#x27;FLAT_EQUITY&#x27; ||
+      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &#x27;FLAT_UNDERLYING&#x27;
     ) {
-      const totalData &#x3D; segmentData.length;
+      const totalData &#x3D; segmentData.length
       for (let itemIndex &#x3D; 0; itemIndex &lt; totalData; itemIndex++) {
-        const itemData &#x3D; segmentData[itemIndex];
-        indexHandlers.map((indexHandler) &#x3D;&gt;
+        const itemData &#x3D; segmentData[itemIndex]
+        indexHandlers.map(indexHandler &#x3D;&gt;
           indexHandler?.addRow(secMasterSegmentKey, itemIndex, itemData)
-        );
+        )
       }
     } else {
-      const totalData &#x3D; segmentData.length;
+      const totalData &#x3D; segmentData.length
       for (let itemIndex &#x3D; 0; itemIndex &lt; totalData; itemIndex++) {
-        const itemData &#x3D; segmentData[itemIndex] as TMasterDataDerivatives;
-        const derivativeItems &#x3D; itemData[3];
-        const derivativeItemsLength &#x3D; derivativeItems.length;
+        const itemData &#x3D; segmentData[itemIndex] as TMasterDataDerivatives
+        const derivativeItems &#x3D; itemData[3]
+        const derivativeItemsLength &#x3D; derivativeItems.length
 
         for (
           let derivativeItemIndex &#x3D; 0;
           derivativeItemIndex &lt; derivativeItemsLength;
           derivativeItemIndex++
         ) {
-          const derivativeItem &#x3D; derivativeItems[derivativeItemIndex];
-          indexHandlers.map((indexHandler) &#x3D;&gt;
+          const derivativeItem &#x3D; derivativeItems[derivativeItemIndex]
+          indexHandlers.map(indexHandler &#x3D;&gt;
             indexHandler?.addRow(
               secMasterSegmentKey,
               itemIndex,
@@ -965,32 +1043,38 @@
               derivativeItemIndex,
               derivativeItem
             )
-          );
+          )
         }
       }
     }
   }
 
-  const indexesArray &#x3D; indexHandlers.map((indexHandler) &#x3D;&gt;
+  const indexesArray &#x3D; indexHandlers.map(indexHandler &#x3D;&gt;
     indexHandler?.getIndex()
-  );
-  const scriptIdIndex &#x3D; indexesArray[0] as TScriptIdIndex;
-  const isinCodeIndex &#x3D; indexesArray[1] as TIsinCodeIndex;
-  const derivativesIndex &#x3D; indexesArray[2] as TDerivativesIndex;
-  const searchStringIndex &#x3D; indexesArray[3] as TSearchStringIndex | undefined;
+  )
+  const scriptIdIndex &#x3D; indexesArray[0] as TScriptIdIndex
+  const isinCodeIndex &#x3D; indexesArray[1] as TIsinCodeIndex
+  const derivativesIndex &#x3D; indexesArray[2] as TDerivativesIndex
+  const searchStringIndex &#x3D; indexesArray[3] as TSearchStringIndex | undefined
 
   const indexes &#x3D; {
     scriptIdIndex,
     isinCodeIndex,
     derivativesIndex,
-    searchStringIndex,
-  };
+    searchStringIndex
+  }
 
-  return indexes;
+  return indexes
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1010,26 +1094,32 @@
                         <i>Default value : </i><code>async (secMasterURL: string) &#x3D;&gt; {
   try {
     const response &#x3D; await fetch(secMasterURL, {
-      method: &quot;HEAD&quot;,
-      mode: &quot;no-cors&quot;,
+      method: &#x27;HEAD&#x27;,
+      mode: &#x27;no-cors&#x27;,
       headers: {
-        &quot;Cache-Control&quot;: &quot;no-cache&quot;,
-        Pragma: &quot;no-cache&quot;,
-        Expires: &quot;0&quot;,
-      },
-    });
+        &#x27;Cache-Control&#x27;: &#x27;no-cache&#x27;,
+        Pragma: &#x27;no-cache&#x27;,
+        Expires: &#x27;0&#x27;
+      }
+    })
 
     if (response) {
-      return response?.headers;
+      return response?.headers
     }
   } catch (err) {
-    console.log(err, &quot;header errors&quot;);
+    console.log(err, &#x27;header errors&#x27;)
   }
-  return null;
+  return null
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1050,47 +1140,53 @@
   secMasterURL: string,
   config: IConfig
 ) &#x3D;&gt; {
-  const headers &#x3D; await fetchOnlyHeaders(secMasterURL);
-  const contentHash &#x3D; getContentHashFromHeaders(headers);
+  const headers &#x3D; await fetchOnlyHeaders(secMasterURL)
+  const contentHash &#x3D; getContentHashFromHeaders(headers)
 
   // NOTE: variable to check if the file content is updated or same
-  const isContentHashSame &#x3D; await checkIfContentHashIsSame(contentHash);
+  const isContentHashSame &#x3D; await checkIfContentHashIsSame(contentHash)
 
   // check if response is cached
-  const cacheResponse &#x3D; await getCacheResponse(secMasterURL);
+  const cacheResponse &#x3D; await getCacheResponse(secMasterURL)
 
   if (isContentHashSame &amp;&amp; cacheResponse) {
-    return cacheResponse;
+    return cacheResponse
   }
 
   const response &#x3D; await fetch(secMasterURL, {
-    method: &quot;GET&quot;,
-  });
+    method: &#x27;GET&#x27;
+  })
 
-  const { headers: currentHeaders &#x3D; {} } &#x3D; response;
-  const currentContentHash &#x3D; getContentHashFromHeaders(currentHeaders);
+  const { headers: currentHeaders &#x3D; {} } &#x3D; response
+  const currentContentHash &#x3D; getContentHashFromHeaders(currentHeaders)
 
-  const SEC_MASTER_ARRAY: TMasterData &#x3D; await response.json();
-  setCacheResponse(secMasterURL, SEC_MASTER_ARRAY);
-  setCacheContentHash(currentContentHash);
+  const SEC_MASTER_ARRAY: TMasterData &#x3D; await response.json()
+  setCacheResponse(secMasterURL, SEC_MASTER_ARRAY)
+  setCacheContentHash(currentContentHash)
 
-  const indexes &#x3D; await createIndexes(SEC_MASTER_ARRAY, config);
+  const indexes &#x3D; await createIndexes(SEC_MASTER_ARRAY, config)
   const dataToPost &#x3D; {
     [STORE_KEYS.MASTER_DATA]: SEC_MASTER_ARRAY,
     [STORE_KEYS.SCRIPT_ID_INDEX]: indexes.scriptIdIndex,
     [STORE_KEYS.DERIVATIVES_INDEX]: indexes.derivativesIndex,
     [STORE_KEYS.ISIN_CODE_INDEX]: indexes.isinCodeIndex,
-    [STORE_KEYS.SEARCH_STRING_INDEX]: indexes.searchStringIndex,
-  };
+    [STORE_KEYS.SEARCH_STRING_INDEX]: indexes.searchStringIndex
+  }
 
   self.postMessage({
     action: INDEXES_CREATED,
-    data: dataToPost,
-  });
+    data: dataToPost
+  })
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1120,6 +1216,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1146,6 +1248,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1169,18 +1277,24 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  keys: [&quot;searchString&quot;, &quot;exchangeSymbol&quot;],
+  keys: [&#x27;searchString&#x27;, &#x27;exchangeSymbol&#x27;],
   limit: 40, // don&#x27;t return more results than you need!
   threshold: -999, // don&#x27;t return bad results,
   scoreFn: (a: any) &#x3D;&gt; {
-    const searchStringScore &#x3D; (a[0] ? a[0].score : -1000) * 0.1;
-    const exchangeSymbolScore &#x3D; (a[1] ? a[1].score : -1000) * 0.9;
-    return searchStringScore + exchangeSymbolScore;
-  },
+    const searchStringScore &#x3D; (a[0] ? a[0].score : -1000) * 0.1
+    const exchangeSymbolScore &#x3D; (a[1] ? a[1].score : -1000) * 0.9
+    return searchStringScore + exchangeSymbolScore
+  }
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1207,6 +1321,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1233,11 +1353,17 @@
   WORKER_CHUNK_ONE,
   WORKER_CHUNK_TWO,
   WORKER_CHUNK_THREE,
-  WORKER_CHUNK_FOUR,
+  WORKER_CHUNK_FOUR
 ]</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1264,6 +1390,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1290,6 +1422,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1316,6 +1454,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1339,14 +1483,20 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  init: &quot;INITIALIZE&quot;,
-  start: &quot;START&quot;,
-  search: &quot;SEARCH&quot;,
-  terminate: &quot;TERMINATE&quot;,
+  init: &#x27;INITIALIZE&#x27;,
+  start: &#x27;START&#x27;,
+  search: &#x27;SEARCH&#x27;,
+  terminate: &#x27;TERMINATE&#x27;
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1379,6 +1529,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1408,6 +1564,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1484,6 +1646,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1510,6 +1678,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1536,6 +1710,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1561,10 +1741,16 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;INDEXES_CREATED&quot;</code>
+                        <i>Default value : </i><code>&#x27;INDEXES_CREATED&#x27;</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1631,6 +1817,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1651,7 +1843,7 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(): TIndexHandler&lt;TScriptIdIndex&gt; &#x3D;&gt; {
-  const index: TScriptIdIndex &#x3D; {};
+  const index: TScriptIdIndex &#x3D; {}
 
   const addRow &#x3D; (
     segmentKey: MASTER_DATA_SEGMENTS,
@@ -1668,29 +1860,35 @@
       | TMasterDataUnderlying
       | TMasterDataDerivativesScript &#x3D;
       (derivativeItem &amp;&amp; derivativeItem) ||
-      (itemData as TMasterDataEquity | TMasterDataUnderlying);
+      (itemData as TMasterDataEquity | TMasterDataUnderlying)
 
-    const scriptId &#x3D; item[0];
+    const scriptId &#x3D; item[0]
 
-    const map: TScriptIdIndexValue &#x3D; [segmentKey, itemIndex];
+    const map: TScriptIdIndexValue &#x3D; [segmentKey, itemIndex]
 
     if (derivativeItemIndex) {
-      map.push(3, derivativeItemIndex);
+      map.push(3, derivativeItemIndex)
     }
 
-    index[scriptId] &#x3D; map;
-  };
+    index[scriptId] &#x3D; map
+  }
 
-  const getIndex &#x3D; () &#x3D;&gt; index;
+  const getIndex &#x3D; () &#x3D;&gt; index
 
   return {
     addRow,
-    getIndex,
-  };
+    getIndex
+  }
 }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1711,7 +1909,7 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(): TIndexHandler&lt;TSearchStringIndex&gt; &#x3D;&gt; {
-    const index: TSearchStringIndex &#x3D; {};
+    const index: TSearchStringIndex &#x3D; {}
 
     const addRow &#x3D; (
       segmentKey: MASTER_DATA_SEGMENTS,
@@ -1723,61 +1921,67 @@
       derivativeItemIndex?: number,
       derivativeItem?: TMasterDataDerivativesScript
     ) &#x3D;&gt; {
-      let exchangeSymbol: TScript[&quot;exchangeSymbol&quot;];
-      let searchString: TScript[&quot;searchable&quot;];
-      let searchPriority: TScript[&quot;searchPriority&quot;];
-      let map: TScriptIdIndexValue;
-      let isAslAllowed: TScript[&quot;aslAllowed&quot;];
+      let exchangeSymbol: TScript[&#x27;exchangeSymbol&#x27;]
+      let searchString: TScript[&#x27;searchable&#x27;]
+      let searchPriority: TScript[&#x27;searchPriority&#x27;]
+      let map: TScriptIdIndexValue
+      let isAslAllowed: TScript[&#x27;aslAllowed&#x27;]
 
-      if (segmentKey.includes(&quot;EQUITY&quot;)) {
-        const item &#x3D; itemData as TMasterDataEquity;
-        exchangeSymbol &#x3D; item[4];
-        isAslAllowed &#x3D; item[3];
-        searchString &#x3D; item[13];
-        searchPriority &#x3D; item[14];
-        map &#x3D; [segmentKey, itemIndex];
-      } else if (segmentKey.includes(&quot;UNDERLYING&quot;)) {
-        const item &#x3D; itemData as TMasterDataUnderlying;
-        exchangeSymbol &#x3D; item[4];
-        isAslAllowed &#x3D; item[3];
-        searchString &#x3D; item[11];
-        searchPriority &#x3D; item[12];
-        map &#x3D; [segmentKey, itemIndex];
+      if (segmentKey.includes(&#x27;EQUITY&#x27;)) {
+        const item &#x3D; itemData as TMasterDataEquity
+        exchangeSymbol &#x3D; item[4]
+        isAslAllowed &#x3D; item[3]
+        searchString &#x3D; item[13]
+        searchPriority &#x3D; item[14]
+        map &#x3D; [segmentKey, itemIndex]
+      } else if (segmentKey.includes(&#x27;UNDERLYING&#x27;)) {
+        const item &#x3D; itemData as TMasterDataUnderlying
+        exchangeSymbol &#x3D; item[4]
+        isAslAllowed &#x3D; item[3]
+        searchString &#x3D; item[11]
+        searchPriority &#x3D; item[12]
+        map &#x3D; [segmentKey, itemIndex]
       } else {
-        const item &#x3D; itemData as TMasterDataDerivatives;
-        exchangeSymbol &#x3D; item[0];
-        isAslAllowed &#x3D; derivativeItem![3];
-        searchString &#x3D; derivativeItem![12];
-        searchPriority &#x3D; derivativeItem![13];
-        map &#x3D; [segmentKey, itemIndex, 3, derivativeItemIndex!];
+        const item &#x3D; itemData as TMasterDataDerivatives
+        exchangeSymbol &#x3D; item[0]
+        isAslAllowed &#x3D; derivativeItem![3]
+        searchString &#x3D; derivativeItem![12]
+        searchPriority &#x3D; derivativeItem![13]
+        map &#x3D; [segmentKey, itemIndex, 3, derivativeItemIndex!]
       }
 
-      if (isAslAllowed &#x3D;&#x3D;&#x3D; &quot;N&quot;) return;
+      if (isAslAllowed &#x3D;&#x3D;&#x3D; &#x27;N&#x27;) return
 
       const searchObj &#x3D; {
         exchangeSymbol,
         searchString,
         searchPriority,
-        data: map,
-      };
-
-      const chunkIndex &#x3D; getChunkIndex(searchPriority);
-      if (!index[chunkIndex]) {
-        index[chunkIndex] &#x3D; [];
+        data: map
       }
-      index[chunkIndex].push(searchObj);
-    };
 
-    const getIndex &#x3D; () &#x3D;&gt; index;
+      const chunkIndex &#x3D; getChunkIndex(searchPriority)
+      if (!index[chunkIndex]) {
+        index[chunkIndex] &#x3D; []
+      }
+      index[chunkIndex].push(searchObj)
+    }
+
+    const getIndex &#x3D; () &#x3D;&gt; index
 
     return {
       addRow,
-      getIndex,
-    };
+      getIndex
+    }
   }</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1804,27 +2008,33 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
-  { name: &quot;NSE_EQ_EQUITY&quot;, type: &quot;FLAT_EQUITY&quot; },
-  { name: &quot;BSE_EQ_EQUITY&quot;, type: &quot;FLAT_EQUITY&quot; },
-  { name: &quot;NSE_FO_FUTSTK&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_FO_FUTIDX&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_FO_OPTIDX&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_FO_OPTSTK&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_CURR_FUTCUR&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_CURR_OPTCUR&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;MCX_COMM_OPTFUT&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;MCX_COMM_FUTCOM&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NCDEX_COMM_OPTFUT&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NCDEX_COMM_FUTCOM&quot;, type: &quot;NESTED&quot; },
-  { name: &quot;NSE_CURR_UNDERLYING&quot;, type: &quot;FLAT_UNDERLYING&quot; },
-  { name: &quot;MCX_COMM_UNDERLYING&quot;, type: &quot;FLAT_UNDERLYING&quot; },
-  { name: &quot;NCDEX_COMM_UNDERLYING&quot;, type: &quot;FLAT_UNDERLYING&quot; },
-  { name: &quot;NSE_EQ_UNDERLYING&quot;, type: &quot;FLAT_UNDERLYING&quot; },
-  { name: &quot;BSE_EQ_UNDERLYING&quot;, type: &quot;FLAT_UNDERLYING&quot; },
+  { name: &#x27;NSE_EQ_EQUITY&#x27;, type: &#x27;FLAT_EQUITY&#x27; },
+  { name: &#x27;BSE_EQ_EQUITY&#x27;, type: &#x27;FLAT_EQUITY&#x27; },
+  { name: &#x27;NSE_FO_FUTSTK&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_FO_FUTIDX&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_FO_OPTIDX&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_FO_OPTSTK&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_CURR_FUTCUR&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_CURR_OPTCUR&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;MCX_COMM_OPTFUT&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;MCX_COMM_FUTCOM&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NCDEX_COMM_OPTFUT&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NCDEX_COMM_FUTCOM&#x27;, type: &#x27;NESTED&#x27; },
+  { name: &#x27;NSE_CURR_UNDERLYING&#x27;, type: &#x27;FLAT_UNDERLYING&#x27; },
+  { name: &#x27;MCX_COMM_UNDERLYING&#x27;, type: &#x27;FLAT_UNDERLYING&#x27; },
+  { name: &#x27;NCDEX_COMM_UNDERLYING&#x27;, type: &#x27;FLAT_UNDERLYING&#x27; },
+  { name: &#x27;NSE_EQ_UNDERLYING&#x27;, type: &#x27;FLAT_UNDERLYING&#x27; },
+  { name: &#x27;BSE_EQ_UNDERLYING&#x27;, type: &#x27;FLAT_UNDERLYING&#x27; }
 ]</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1854,6 +2064,12 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Description placeholder</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

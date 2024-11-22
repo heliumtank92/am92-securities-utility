@@ -7,17 +7,17 @@ export {
   getScripsByScripIds
 } from './secMaster'
 
+/** ${1:Description placeholder} */
 const DEFAULT_VALUES: IConfig = {
   requireSearchModule: false,
   requireSocketModule: false
 }
 
 /**
+ * ${1:Description placeholder}
  *
- *
- * @export
- * @param {string} secMasterURL
- * @param {IConfig} [config=DEFAULT_VALUES]
+ * @param secMasterURL
+ * @param [config=DEFAULT_VALUES]
  */
 export function initialize(
   secMasterURL: string,

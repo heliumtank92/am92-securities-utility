@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>${1:Description placeholder}</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -201,6 +208,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -239,6 +252,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>${1:Description placeholder}</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -247,8 +266,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface IConfig {
-  requireSearchModule?: boolean;
-  requireSocketModule?: boolean;
+  /** ${1:Description placeholder} */
+  requireSearchModule?: boolean
+  /** ${1:Description placeholder} */
+  requireSocketModule?: boolean
 }
 </code></pre>
     </div>

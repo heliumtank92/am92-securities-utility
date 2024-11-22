@@ -1,4 +1,11 @@
+/**
+ * ${1:Description placeholder}
+ *
+ * @interface
+ */
 export interface IConfig {
-  requireSearchModule?: boolean;
-  requireSocketModule?: boolean;
+  /** ${1:Description placeholder} */
+  requireSearchModule?: boolean
+  /** ${1:Description placeholder} */
+  requireSocketModule?: boolean
 }

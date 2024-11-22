@@ -10,6 +10,11 @@ import {
   TSearchStringIndex
 } from './Store'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @template I
+ */
 export type TIndexHandler<I> = {
   addRow: (
     segmentKey: MASTER_DATA_SEGMENTS,
@@ -24,6 +29,7 @@ export type TIndexHandler<I> = {
   getIndex: () => I
 }
 
+/** ${1:Description placeholder} */
 export type TIndexHandlers =
   | [
       TIndexHandler<TScriptIdIndex>,

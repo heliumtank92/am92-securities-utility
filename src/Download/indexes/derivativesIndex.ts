@@ -8,9 +8,16 @@ import {
   TMasterDataUnderlying
 } from '../../TYPES/Store'
 
+/** ${1:Description placeholder} */
 const FUTURES = ['FUTSTK', 'FUTIDX', 'FUTCUR', 'FUTCOM']
+/** ${1:Description placeholder} */
 const OPTIONS = ['OPTSTK', 'OPTCUR', 'OPTFUT', 'OPTIDX']
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns
+ */
 export const derivativesIndexHandler = (): TIndexHandler<TDerivativesIndex> => {
   const index: TDerivativesIndex = {}
 
