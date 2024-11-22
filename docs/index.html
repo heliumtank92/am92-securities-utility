@@ -103,6 +103,38 @@
 <h2>Installation</h2>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash">$ npm install --save &#64;am92/securities-utility</code></pre></div><br />
 
+<h2>Initialization</h2>
+<p>The initialization step downloads the security master (sec master) from the specified URL and applies optimizations to enhance the performance of subsequent functionalities. This step runs on the main thread, and the package internally manages the worker for parallel execution. You only need to include a dedicated TypeScript/JavaScript file in your index.html</p>
+<br />
+
+<h3>Instructions</h3>
+<ol>
+<li><h4>Create a New File: <br></h4>
+ Create a new TypeScript/JavaScript file (e.g., <code>initializeSecMaster.ts</code>) containing the initialization code.</li>
+</ol>
+<p><code>initializeSecMaster.ts</code></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { initialize } from &#39;&#64;am92/securities-utility&#39;;
+
+
+const SEC_MASTER_URL = process.env.SEC_MASTER_URL; // URL for downloading the sec master (can be environment-specific)
+
+// Initialize the sec master
+initialize(SEC_MASTER_URL).then(() =&gt; {
+  console.log(&#39;Sec master initialization successful.&#39;);
+}).catch(error =&gt; {
+  console.error(&#39;Sec master initialization failed:&#39;, error);
+});</code></pre></div><ol start="2">
+<li><h4>Include the File in <code>index.html</code></h4>
+Add the following script tag to your index.html to include the file:</li>
+</ol>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&lt;script type=&quot;module&quot; src=&quot;./initializeSecMaster.ts&quot;&gt;&lt;/script&gt;</code></pre></div><h3>Notes:</h3>
+<ul>
+<li>The package automatically handles the use of a web worker for parallel execution, ensuring the main thread remains unblocked.</li>
+<li>Ensure the <code>SEC_MASTER_URL</code> environment variable is correctly configured for your deployment environment.</li>
+</ul>
+<p>This streamlined approach keeps your application setup simple while leveraging the package&#39;s internal optimizations.</p>
+<br />
+
 <h2>Contributors</h2>
 <table>
   <tbody>
@@ -123,7 +155,7 @@
       </td>
       <td align="center">
         <a href='https://github.com/jsuyash'>
-          <img src="https://avatars.githubusercontent.com/u/8692023?s=400&v=4" width="100px;" alt="Suyash Jadhav"/>
+          <img src="https://avatars.githubusercontent.com/u/18147118?v=4" width="100px;" alt="Suyash Jadhav"/>
           <br />
           <sub><b>Suyash Jadhav</b></sub>
         </a>

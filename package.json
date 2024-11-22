@@ -21,7 +21,7 @@
     "version": "npm-run-all generate:docs commit:docs",
     "postversion": "git push && git push --tags && npm run publish:pkg",
     "publish:pkg": "npm publish",
-    "generate:docs": "npx compodoc -p tsconfig.json",
+    "generate:docs": "npx compodoc -p tsconfig.json -d docs",
     "commit:docs": "git add docs && git commit -m 'Docs Updated'"
   },
   "repository": "git@github.com:heliumtank92/am92-securities-utility.git",
