@@ -42,11 +42,12 @@ import { initialize } from '@am92/securities-utility';
 const SEC_MASTER_URL = process.env.SEC_MASTER_URL; // URL for downloading the sec master (can be environment-specific)
 
 // Initialize the sec master
-initialize(SEC_MASTER_URL).then(() => {
+try {
+  initialize(SEC_MASTER_URL)
   console.log('Sec master initialization successful.');
-}).catch(error => {
+} catch (error) {
   console.error('Sec master initialization failed:', error);
-});
+}
 ```
 2. #### Include the File in `index.html`
    Add the following script tag to your index.html to include the file:
