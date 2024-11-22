@@ -23,6 +23,46 @@ $ npm install --save @am92/securities-utility
 ```
 <br />
 
+## Initialization
+The initialization step downloads the security master (sec master) from the specified URL and applies optimizations to enhance the performance of subsequent functionalities. This step runs on the main thread, and the package internally manages the worker for parallel execution. You only need to include a dedicated TypeScript/JavaScript file in your index.html
+
+<br />
+
+### Instructions
+
+1. #### Create a New File: <br>
+    Create a new TypeScript/JavaScript file (e.g., `initializeSecMaster.ts`) containing the initialization code.
+
+
+`initializeSecMaster.ts`
+```typescript
+import { initialize } from '@am92/securities-utility';
+
+
+const SEC_MASTER_URL = process.env.SEC_MASTER_URL; // URL for downloading the sec master (can be environment-specific)
+
+// Initialize the sec master
+initialize(SEC_MASTER_URL).then(() => {
+  console.log('Sec master initialization successful.');
+}).catch(error => {
+  console.error('Sec master initialization failed:', error);
+});
+```
+2. #### Include the File in `index.html`
+   Add the following script tag to your index.html to include the file:
+
+```typescript
+<script type="module" src="./initializeSecMaster.ts"></script>
+```
+
+### Notes:
+* The package automatically handles the use of a web worker for parallel execution, ensuring the main thread remains unblocked.
+* Ensure the `SEC_MASTER_URL` environment variable is correctly configured for your deployment environment.
+
+This streamlined approach keeps your application setup simple while leveraging the package's internal optimizations.
+
+<br />
+
 ## Contributors
 <table>
   <tbody>
