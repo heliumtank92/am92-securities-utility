@@ -3,8 +3,8 @@
 [![npm version](https://img.shields.io/npm/v/@am92/securities-utility?style=for-the-badge)](https://www.npmjs.com/package/@am92/securities-utility)&nbsp;
 [![ECMAScript Module](https://img.shields.io/badge/ECMAScript-Module%20Only-red?style=for-the-badge)](https://nodejs.org/api/esm.html)&nbsp;
 [![License: MIT](https://img.shields.io/npm/l/@am92/securities-utility?color=yellow&style=for-the-badge)](https://opensource.org/licenses/MIT)&nbsp;
-[![Vulnerabilities: Snyk](https://img.shields.io/snyk/vulnerabilities/npm/@am92/securities-utility?style=for-the-badge)](https://security.snyk.io/package/npm/@am92%2Fxml-utils)&nbsp;
-[![Downloads](https://img.shields.io/npm/dy/@am92/securities-utility?style=for-the-badge)](https://npm-stat.com/charts.html?package=%40m92%2Fxml-utils)
+[![Vulnerabilities: Snyk](https://img.shields.io/snyk/vulnerabilities/npm/@am92/securities-utility?style=for-the-badge)](https://security.snyk.io/package/npm/@am92%2Fsecurities-utility)&nbsp;
+[![Downloads](https://img.shields.io/npm/dy/@am92/securities-utility?style=for-the-badge)](https://npm-stat.com/charts.html?package=%40m92%2Fsecurities-utility)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/@am92/securities-utility?style=for-the-badge)](https://bundlephobia.com/package/@am92/securities-utility)
 
 <br />
