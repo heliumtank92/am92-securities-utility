@@ -43,7 +43,7 @@ $ npm install --save @am92/securities-utility
       </td>
       <td align="center">
         <a href='https://github.com/jsuyash'>
-          <img src="https://avatars.githubusercontent.com/u/8692023?s=400&v=4" width="100px;" alt="Suyash Jadhav"/>
+          <img src="https://avatars.githubusercontent.com/u/18147118?v=4" width="100px;" alt="Suyash Jadhav"/>
           <br />
           <sub><b>Suyash Jadhav</b></sub>
         </a>
