@@ -41,6 +41,13 @@ $ npm install --save @am92/securities-utility
           <sub><b>Mehul Agarwal</b></sub>
         </a>
       </td>
+      <td align="center">
+        <a href='https://github.com/jsuyash'>
+          <img src="https://avatars.githubusercontent.com/u/8692023?s=400&v=4" width="100px;" alt="Suyash Jadhav"/>
+          <br />
+          <sub><b>Suyash Jadhav</b></sub>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
