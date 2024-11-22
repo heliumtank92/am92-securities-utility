@@ -1,1 +1,2 @@
-export const INDEXES_CREATED = "INDEXES_CREATED";
+/** ${1:Description placeholder} */
+export const INDEXES_CREATED = 'INDEXES_CREATED'

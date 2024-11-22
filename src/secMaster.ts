@@ -2,197 +2,246 @@ import {
   getDerivativeIndex,
   getIsinIndex,
   getMasterData,
-  getScripIndex,
-} from "./store/index";
-import { TScript, TScriptPopulate } from "./TYPES/Script";
+  getScripIndex
+} from './store/index'
+import { TScript, TScriptPopulate } from './TYPES/Script'
 import {
   MASTER_DATA_SEGMENTS,
   TMasterDataDerivatives,
   TMasterDataEquity,
   TMasterDataUnderlying,
-  TScriptIdIndexValue,
-} from "./TYPES/Store";
-import { memoize } from "./Utils/memoized";
+  TScriptIdIndexValue
+} from './TYPES/Store'
+import { memoize } from './Utils/memoized'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param scriptId
+ * @param [populate]
+ * @returns
+ */
 const _getScripByScripId = (
-  scriptId: TScript["scriptId"],
+  scriptId: TScript['scriptId'],
   populate?: TScriptPopulate
 ) => {
-  const scriptIdIndex = getScripIndex();
+  const scriptIdIndex = getScripIndex()
 
   if (!scriptIdIndex) {
     // TODO: Beautify
-    console.warn("ScriptIdIndex not found in store");
-    return;
+    console.warn('ScriptIdIndex not found in store')
+    return
   }
 
-  const locations = scriptIdIndex[scriptId];
+  const locations = scriptIdIndex[scriptId]
 
   if (!locations) {
-    return;
+    return
   }
 
-  return getScriptByScriptIdIndexValue(locations, populate);
-};
+  return getScriptByScriptIdIndexValue(locations, populate)
+}
 
-export const getScripByScripId = memoize(_getScripByScripId, 100);
+/** ${1:Description placeholder} */
+export const getScripByScripId = memoize(_getScripByScripId, 100)
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param scriptIds
+ * @param [populate]
+ * @returns
+ */
 export const getScripsByScripIds = (
-  scriptIds: TScript["scriptId"][],
+  scriptIds: TScript['scriptId'][],
   populate?: TScriptPopulate
 ) => {
   if (!scriptIds) {
-    return [];
+    return []
   }
 
   const scripts = scriptIds
-    .map((scriptId) => getScripByScripId(scriptId, populate))
-    .filter((script) => script !== undefined);
-  return scripts;
-};
+    .map(scriptId => getScripByScripId(scriptId, populate))
+    .filter(script => script !== undefined)
+  return scripts
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param isinCode
+ * @param [populate]
+ * @returns
+ */
 export const getScripsByIsinCode = (
-  isinCode: TScript["isinCode"],
+  isinCode: TScript['isinCode'],
   populate?: TScriptPopulate
 ) => {
-  const isinCodeIndex = getIsinIndex();
+  const isinCodeIndex = getIsinIndex()
 
   if (!isinCode) {
-    return [];
+    return []
   }
 
   if (!isinCodeIndex) {
     // TODO: Beautify
-    console.warn("isinCodeIndex not found in store");
-    return;
+    console.warn('isinCodeIndex not found in store')
+    return
   }
 
-  const scriptIds = isinCodeIndex[isinCode];
-  return getScripsByScripIds(scriptIds, populate);
-};
+  const scriptIds = isinCodeIndex[isinCode]
+  return getScripsByScripIds(scriptIds, populate)
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param scriptId
+ * @param [derivativeType="BOTH"]
+ * @param [populate]
+ * @returns
+ */
 export const getDerivativeScripsByScripId = (
-  scriptId: TScript["scriptId"],
-  derivativeType: "FUTURES" | "OPTIONS" | "BOTH" = "BOTH",
+  scriptId: TScript['scriptId'],
+  derivativeType: 'FUTURES' | 'OPTIONS' | 'BOTH' = 'BOTH',
   populate?: TScriptPopulate
 ) => {
-  const script = getScripByScripId(scriptId, populate);
+  const script = getScripByScripId(scriptId, populate)
 
   if (!script) {
-    return {};
+    return {}
   }
 
-  const { underlying, isinCode, exchange, instrumentType } = script;
+  const { underlying, isinCode, exchange, instrumentType } = script
 
-  let underlyingId: TScript["underlying"] = underlying;
+  let underlyingId: TScript['underlying'] = underlying
   if (!underlyingId) {
-    if (exchange === "NSE" && instrumentType === "EQUITY") {
-      underlyingId = scriptId;
+    if (exchange === 'NSE' && instrumentType === 'EQUITY') {
+      underlyingId = scriptId
     }
 
     if (!isinCode) {
-      return {};
+      return {}
     }
 
-    const isinCodeIndex = getIsinIndex();
+    const isinCodeIndex = getIsinIndex()
     if (!isinCodeIndex) {
       // TODO: Beautify
-      console.warn("isinCodeIndex not found in store");
-      return {};
+      console.warn('isinCodeIndex not found in store')
+      return {}
     }
 
-    if (exchange === "BSE") {
-      const scriptIds = isinCodeIndex && isinCodeIndex[isinCode];
+    if (exchange === 'BSE') {
+      const scriptIds = isinCodeIndex && isinCodeIndex[isinCode]
       const nseScriptId = scriptIds.filter(
-        (scriptIdentifier) => scriptIdentifier !== scriptId
-      )[0];
-      underlyingId = nseScriptId;
+        scriptIdentifier => scriptIdentifier !== scriptId
+      )[0]
+      underlyingId = nseScriptId
     }
   }
 
-  const derivativesIndex = getDerivativeIndex();
+  const derivativesIndex = getDerivativeIndex()
   if (!derivativesIndex) {
     // TODO: Beautify
-    console.warn("derivativesIndex not found in store");
-    return {};
+    console.warn('derivativesIndex not found in store')
+    return {}
   }
 
   const derivativesScriptIdsObj =
-    (underlyingId && derivativesIndex[underlyingId]) || null;
+    (underlyingId && derivativesIndex[underlyingId]) || null
 
   if (derivativesScriptIdsObj) {
-    if (derivativeType === "BOTH") {
+    if (derivativeType === 'BOTH') {
       return {
         FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate),
-        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate),
-      };
-    } else if (derivativeType === "FUTURES") {
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
+    } else if (derivativeType === 'FUTURES') {
       return {
-        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate),
-      };
+        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate)
+      }
     } else {
       return {
-        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate),
-      };
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
     }
   }
-};
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param scriptIdIndexValue
+ * @param [populate=[]]
+ * @returns
+ */
 export const getScriptByScriptIdIndexValue = (
   scriptIdIndexValue: TScriptIdIndexValue,
   populate: TScriptPopulate = []
 ): TScript | undefined | Pick<TScript, TScriptPopulate[number]> => {
-  const { instrumentType } = _getSegmentDetails(scriptIdIndexValue[0]);
+  const { instrumentType } = _getSegmentDetails(scriptIdIndexValue[0])
 
-  let script: TScript | undefined;
-  if (instrumentType === "EQUITY") {
-    script = _mapFlattenEquityScriptToScript(scriptIdIndexValue);
-  } else if (instrumentType === "UNDERLYING") {
-    script = _mapFlattenUnderlingScriptToScript(scriptIdIndexValue);
+  let script: TScript | undefined
+  if (instrumentType === 'EQUITY') {
+    script = _mapFlattenEquityScriptToScript(scriptIdIndexValue)
+  } else if (instrumentType === 'UNDERLYING') {
+    script = _mapFlattenUnderlingScriptToScript(scriptIdIndexValue)
   } else {
-    script = _mapFlattenDerivativeScriptToScript(scriptIdIndexValue);
+    script = _mapFlattenDerivativeScriptToScript(scriptIdIndexValue)
   }
 
   if (populate.length && script) {
     const scriptObj = Object.fromEntries(
-      populate.filter((key) => key in script).map((key) => [key, script[key]])
-    ) as Pick<TScript, keyof TScript>;
-    return scriptObj;
+      populate.filter(key => key in script).map(key => [key, script[key]])
+    ) as Pick<TScript, keyof TScript>
+    return scriptObj
   }
 
-  return script;
-};
+  return script
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param masterDataSegment
+ * @returns
+ */
 const _getSegmentDetails = (masterDataSegment: MASTER_DATA_SEGMENTS) => {
-  const [exchange, segment, instrumentType] = masterDataSegment.split("_") as [
-    TScript["exchange"],
-    TScript["segment"],
-    TScript["instrumentType"]
-  ];
-  const scriptObj: Pick<TScript, "segment" | "exchange" | "instrumentType"> = {
+  const [exchange, segment, instrumentType] = masterDataSegment.split('_') as [
+    TScript['exchange'],
+    TScript['segment'],
+    TScript['instrumentType']
+  ]
+  const scriptObj: Pick<TScript, 'segment' | 'exchange' | 'instrumentType'> = {
     segment,
     exchange,
-    instrumentType,
-  };
-  return scriptObj;
-};
+    instrumentType
+  }
+  return scriptObj
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param locations
+ * @returns
+ */
 const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
-  const masterData = getMasterData();
+  const masterData = getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn("masterData not found in store");
-    return;
+    console.warn('masterData not found in store')
+    return
   }
 
-  const [masterDataSegment, scriptIndex] = locations;
+  const [masterDataSegment, scriptIndex] = locations
 
   const { segment, exchange, instrumentType } =
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData = masterData[masterDataSegment] as TMasterDataEquity[];
-  const flattenEquityScript = segmentData[scriptIndex];
+  const segmentData = masterData[masterDataSegment] as TMasterDataEquity[]
+  const flattenEquityScript = segmentData[scriptIndex]
 
   const [
     scriptId,
@@ -219,8 +268,8 @@ const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  ] = flattenEquityScript;
+    fiftyTwoWeekHigh
+  ] = flattenEquityScript
 
   const scriptObj: TScript = {
     segment,
@@ -250,28 +299,34 @@ const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  };
+    fiftyTwoWeekHigh
+  }
 
-  return scriptObj;
-};
+  return scriptObj
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param locations
+ * @returns
+ */
 const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
-  const masterData = getMasterData();
+  const masterData = getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn("masterData not found in store");
-    return;
+    console.warn('masterData not found in store')
+    return
   }
 
-  const [masterDataSegment, scriptIndex] = locations;
+  const [masterDataSegment, scriptIndex] = locations
 
   const { segment, exchange, instrumentType } =
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData = masterData[masterDataSegment] as TMasterDataUnderlying[];
-  const flattenEquityScript = segmentData[scriptIndex];
+  const segmentData = masterData[masterDataSegment] as TMasterDataUnderlying[]
+  const flattenEquityScript = segmentData[scriptIndex]
 
   const [
     scriptId,
@@ -295,8 +350,8 @@ const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  ] = flattenEquityScript;
+    fiftyTwoWeekHigh
+  ] = flattenEquityScript
 
   const scriptObj: TScript = {
     segment,
@@ -323,39 +378,45 @@ const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
     dprLow,
     dprHigh,
     fiftyTwoWeekLow,
-    fiftyTwoWeekHigh,
-  };
+    fiftyTwoWeekHigh
+  }
 
-  return scriptObj;
-};
+  return scriptObj
+}
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @param locations
+ * @returns
+ */
 const _mapFlattenDerivativeScriptToScript = (
   locations: TScriptIdIndexValue
 ) => {
-  const masterData = getMasterData();
+  const masterData = getMasterData()
 
   if (!masterData) {
     // TODO: Beautify
-    console.warn("masterData not found in store");
-    return;
+    console.warn('masterData not found in store')
+    return
   }
 
   const [
     masterDataSegment,
     scriptIndex,
     derivativesIndex,
-    derivativesScriptIndex,
-  ] = locations;
+    derivativesScriptIndex
+  ] = locations
 
   const { segment, exchange, instrumentType } =
-    _getSegmentDetails(masterDataSegment);
+    _getSegmentDetails(masterDataSegment)
 
-  const segmentData = masterData[masterDataSegment] as TMasterDataDerivatives[];
-  const flattenDerivative = segmentData[scriptIndex];
+  const segmentData = masterData[masterDataSegment] as TMasterDataDerivatives[]
+  const flattenDerivative = segmentData[scriptIndex]
   const [exchangeSymbol, _, assetClass, flattenDerivativeScripts] =
-    flattenDerivative;
+    flattenDerivative
   const flattenDerivativeScript =
-    flattenDerivativeScripts[derivativesScriptIndex!];
+    flattenDerivativeScripts[derivativesScriptIndex!]
 
   if (flattenDerivativeScript) {
     const [
@@ -382,8 +443,8 @@ const _mapFlattenDerivativeScriptToScript = (
       dprLow,
       dprHigh,
       fiftyTwoWeekLow,
-      fiftyTwoWeekHigh,
-    ] = flattenDerivativeScript;
+      fiftyTwoWeekHigh
+    ] = flattenDerivativeScript
 
     const scriptObj: TScript = {
       segment,
@@ -414,9 +475,9 @@ const _mapFlattenDerivativeScriptToScript = (
       dprLow,
       dprHigh,
       fiftyTwoWeekLow,
-      fiftyTwoWeekHigh,
-    };
+      fiftyTwoWeekHigh
+    }
 
-    return scriptObj;
+    return scriptObj
   }
-};
+}

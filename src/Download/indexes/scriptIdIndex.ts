@@ -1,4 +1,4 @@
-import { TIndexHandler } from "../../TYPES/IndexHandler";
+import { TIndexHandler } from '../../TYPES/IndexHandler'
 import {
   MASTER_DATA_SEGMENTS,
   TMasterDataDerivatives,
@@ -6,11 +6,16 @@ import {
   TMasterDataEquity,
   TMasterDataUnderlying,
   TScriptIdIndex,
-  TScriptIdIndexValue,
-} from "../../TYPES/Store";
+  TScriptIdIndexValue
+} from '../../TYPES/Store'
 
+/**
+ * ${1:Description placeholder}
+ *
+ * @returns
+ */
 export const scriptIdIndexHandler = (): TIndexHandler<TScriptIdIndex> => {
-  const index: TScriptIdIndex = {};
+  const index: TScriptIdIndex = {}
 
   const addRow = (
     segmentKey: MASTER_DATA_SEGMENTS,
@@ -27,23 +32,23 @@ export const scriptIdIndexHandler = (): TIndexHandler<TScriptIdIndex> => {
       | TMasterDataUnderlying
       | TMasterDataDerivativesScript =
       (derivativeItem && derivativeItem) ||
-      (itemData as TMasterDataEquity | TMasterDataUnderlying);
+      (itemData as TMasterDataEquity | TMasterDataUnderlying)
 
-    const scriptId = item[0];
+    const scriptId = item[0]
 
-    const map: TScriptIdIndexValue = [segmentKey, itemIndex];
+    const map: TScriptIdIndexValue = [segmentKey, itemIndex]
 
     if (derivativeItemIndex) {
-      map.push(3, derivativeItemIndex);
+      map.push(3, derivativeItemIndex)
     }
 
-    index[scriptId] = map;
-  };
+    index[scriptId] = map
+  }
 
-  const getIndex = () => index;
+  const getIndex = () => index
 
   return {
     addRow,
-    getIndex,
-  };
-};
+    getIndex
+  }
+}
