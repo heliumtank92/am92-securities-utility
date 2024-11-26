@@ -1,6 +1,6 @@
 import { getChunkIndex } from '../../Constants/SEARCH_WORKER'
 import { TIndexHandler } from '../../TYPES/IndexHandler'
-import { TScript } from '../../TYPES/Script'
+import { IScript } from '../../TYPES/Script'
 import {
   MASTER_DATA_SEGMENTS,
   TMasterDataDerivatives,
@@ -30,11 +30,11 @@ export const searchStringIndexHandler =
       derivativeItemIndex?: number,
       derivativeItem?: TMasterDataDerivativesScript
     ) => {
-      let exchangeSymbol: TScript['exchangeSymbol']
-      let searchString: TScript['searchable']
-      let searchPriority: TScript['searchPriority']
+      let exchangeSymbol: IScript['exchangeSymbol']
+      let searchString: IScript['searchable']
+      let searchPriority: IScript['searchPriority']
       let map: TScriptIdIndexValue
-      let isAslAllowed: TScript['aslAllowed']
+      let isAslAllowed: IScript['aslAllowed']
 
       if (segmentKey.includes('EQUITY')) {
         const item = itemData as TMasterDataEquity

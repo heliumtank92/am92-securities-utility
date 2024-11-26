@@ -1,4 +1,9 @@
-/** ${1:Description placeholder} */
+/**
+ * Represents the possible instrument types for financial assets.
+ *
+ * @type {TInstrumentType}
+ * @enum
+ */
 export type TInstrumentType =
   | 'EQUITY'
   | 'FUTSTK'
@@ -11,11 +16,20 @@ export type TInstrumentType =
   | 'FUTCOM'
   | 'UNDERLYING'
 
-/** ${1:Description placeholder} */
+/**
+ * Represents the possible exchanges where financial instruments can be traded.
+ *
+ * @type {TExchange}
+ * @enum
+ */
 export type TExchange = 'NSE' | 'BSE' | 'MCX' | 'NCDEX'
 
-/** ${1:Description placeholder} */
-export type TScript = {
+/**
+ * Interface representing a financial script, which contains various details related to a specific instrument in a given exchange and segment.
+ *
+ * @interface IScript
+ */
+export interface IScript {
   segment: string
   exchange: TExchange
   instrumentType: TInstrumentType
@@ -57,5 +71,9 @@ export type TScript = {
   optionType?: string
 }
 
-/** ${1:Description placeholder} */
-export type TScriptPopulate = (keyof TScript)[]
+/**
+ * A type representing the keys of the IScript interface that are used to populate or extract specific fields of a script.
+ *
+ * @type {TScriptPopulate}
+ */
+export type TScriptPopulate = (keyof IScript)[]

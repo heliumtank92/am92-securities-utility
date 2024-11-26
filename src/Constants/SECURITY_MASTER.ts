@@ -1,7 +1,9 @@
-import { TSecSegmentStructureMapType } from '../TYPES/SecurityMaster'
+import { ISecSegmentStructureMapType } from '../TYPES/SecurityMaster'
 
-/** ${1:Description placeholder} */
-export const SEC_SEGMENTS: TSecSegmentStructureMapType[] = [
+/**
+ * Security segment configurations defining the structure and type of different market segments.
+ */
+export const SEC_SEGMENTS: ISecSegmentStructureMapType[] = [
   { name: 'NSE_EQ_EQUITY', type: 'FLAT_EQUITY' },
   { name: 'BSE_EQ_EQUITY', type: 'FLAT_EQUITY' },
   { name: 'NSE_FO_FUTSTK', type: 'NESTED' },

@@ -1,15 +1,16 @@
 import { IWorkerConstantsOptions } from '../TYPES/SearchWorker'
 
-/** ${1:Description placeholder} */
+/**
+ * Worker chunk configuration representing the range for processing equity, futures, options, underlying data.
+ */
 export const WORKER_CHUNK_ONE = { min: 1, max: 25000, chunkIndex: 0 } // EQUITY
-/** ${1:Description placeholder} */
 export const WORKER_CHUNK_TWO = { min: 25001, max: 125000, chunkIndex: 1 } // FUTURE
-/** ${1:Description placeholder} */
 export const WORKER_CHUNK_THREE = { min: 125001, max: 150000, chunkIndex: 2 } // OPTIONS
-/** ${1:Description placeholder} */
 export const WORKER_CHUNK_FOUR = { min: 150001, max: 199999, chunkIndex: 3 } // UNDERLYING
 
-/** ${1:Description placeholder} */
+/**
+ * Metadata collection of all worker chunk configurations for managing processing ranges.
+ */
 export const WORKER_CHUNK_META = [
   WORKER_CHUNK_ONE,
   WORKER_CHUNK_TWO,
@@ -17,14 +18,16 @@ export const WORKER_CHUNK_META = [
   WORKER_CHUNK_FOUR
 ]
 
-/** ${1:Description placeholder} */
+/**
+ * Default priority value used when no explicit priority is provided for a chunk.
+ */
 const DEFAULT_CHUNK_PRIORITY = 100
 
 /**
- * ${1:Description placeholder}
+ * Determines the chunk index corresponding to a given priority value.
  *
- * @param priority
- * @returns
+ * @param priority - The priority value to evaluate (defaults to `DEFAULT_CHUNK_PRIORITY` if null).
+ * @returns The chunk index that matches the provided priority range.
  */
 export function getChunkIndex(priority: number | null) {
   const searchPriority = priority || DEFAULT_CHUNK_PRIORITY
@@ -49,10 +52,14 @@ export function getChunkIndex(priority: number | null) {
   }
 }
 
-/** ${1:Description placeholder} */
+/**
+ * The maximum number of records that can be processed in a single search chunk.
+ */
 export const MAX_FUSE_CHUNK_SIZE = 20000
 
-/** ${1:Description placeholder} */
+/**
+ * Search configuration options used to prioritize and filter search results.
+ */
 export const SEARCH_OPTIONS = {
   keys: ['searchString', 'exchangeSymbol'],
   limit: 40, // don't return more results than you need!
@@ -64,7 +71,9 @@ export const SEARCH_OPTIONS = {
   }
 }
 
-/** ${1:Description placeholder} */
+/**
+ * Options defining worker lifecycle commands and actions.
+ */
 export const WORKER_CONSTANTS_OPTIONS: IWorkerConstantsOptions = {
   init: 'INITIALIZE',
   start: 'START',
