@@ -1,15 +1,10 @@
 /**
- * ${1:Description placeholder}
- *
- * @interface
+ * Defines the structure of constants used to interact with a web worker.
+ * Each property represents a specific action or lifecycle event for the worker.
  */
 export interface IWorkerConstantsOptions {
-  /** ${1:Description placeholder} */
   init: string
-  /** ${1:Description placeholder} */
   start: string
-  /** ${1:Description placeholder} */
   search: string
-  /** ${1:Description placeholder} */
   terminate: string
 }

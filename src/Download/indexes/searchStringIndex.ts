@@ -12,9 +12,12 @@ import {
 } from '../../TYPES/Store'
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of searchable strings for scripts, organizing them by
+ * search priority into chunked groups. This is useful for efficient search
+ * and retrieval operations.
  *
- * @returns
+ * @returns {TIndexHandler<TSearchStringIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const searchStringIndexHandler =
   (): TIndexHandler<TSearchStringIndex> => {

@@ -21,8 +21,10 @@ const DEFAULT_VALUES: IConfig = {
 /**
  * Initializes the system by setting up the security master download and preparing the required modules.
  *
- * @param secMasterURL - The URL for the security master, used for downloading data and setting up indexes.
- * @param [config=DEFAULT_VALUES]
+ * @param {string} secMasterURL - The URL for the security master, used for downloading data and setting up indexes.
+ * @param {IConfig} [config=DEFAULT_VALUES] - Configuration object to customize the initialization behavior.
+ *   - `requireSearchModule` {boolean} - Specifies whether the search module is required (default: `false`).
+ *   - `requireSocketModule` {boolean} - Specifies whether the socket module is required (default: `false`).
  *
  * @throws A warning if `secMasterURL` is invalid or not provided.
  */

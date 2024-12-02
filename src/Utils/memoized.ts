@@ -1,13 +1,18 @@
-/** ${1:Description placeholder} */
+/**
+ * Represents any function with any number of arguments and return type.
+ */
 type AnyFunction = (...args: any[]) => any
 
 /**
- * ${1:Description placeholder}
+ * Memoizes a function by caching its results based on the arguments provided.
+ * Improves performance for functions with expensive computations by avoiding redundant calculations for the same inputs.
  *
- * @template T
- * @param fn
- * @param [cacheLimit=100]
- * @returns
+ * The cache uses a least recently used (LRU) strategy, where the least recently accessed item is evicted when the cache exceeds its size limit.
+ *
+ * @template T - The type of the function to be memoized.
+ * @param {T} fn - The function to be memoized.
+ * @param {number} [cacheLimit=100] - The maximum number of cached results. Defaults to 100.
+ * @returns {T} - The memoized version of the input function.
  */
 export function memoize<T extends AnyFunction>(
   fn: T,

@@ -19,7 +19,6 @@ type TMessageEvent = {
  * @class DownloadManager
  */
 export default class DownloadManager {
-  /** ${1:Description placeholder} */
   worker: any
   /**
    * Creates an instance of DownloadManager.

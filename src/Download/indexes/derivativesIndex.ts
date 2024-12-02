@@ -8,15 +8,16 @@ import {
   TMasterDataUnderlying
 } from '../../TYPES/Store'
 
-/** ${1:Description placeholder} */
 const FUTURES = ['FUTSTK', 'FUTIDX', 'FUTCUR', 'FUTCOM']
-/** ${1:Description placeholder} */
 const OPTIONS = ['OPTSTK', 'OPTCUR', 'OPTFUT', 'OPTIDX']
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of derivatives data by organizing futures and options
+ * based on their underlying assets. This is useful for quick lookups and
+ * categorization of derivative scripts.
  *
- * @returns
+ * @returns {TIndexHandler<TDerivativesIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const derivativesIndexHandler = (): TIndexHandler<TDerivativesIndex> => {
   const index: TDerivativesIndex = {}

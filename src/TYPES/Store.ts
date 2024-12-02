@@ -141,7 +141,11 @@ export type TMasterDataDerivativesScript = [
   IScript['fiftyTwoWeekHigh']
 ]
 
-/** ${1:Description placeholder} */
+/**
+ * Represents the data structure for derivatives in the system.
+ * This type includes information about the exchange symbol, underlying asset,
+ * asset class, and an array of derivative scripts associated with the derivative.
+ */
 export type TMasterDataDerivatives = [
   IScript['exchangeSymbol'],
   IScript['underlying'],

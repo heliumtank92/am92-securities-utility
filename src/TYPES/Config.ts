@@ -1,11 +1,8 @@
 /**
- * ${1:Description placeholder}
- *
- * @interface
+ * Config interface for modules required in the application.
+ * This interface allows defining which modules should be included or required.
  */
 export interface IConfig {
-  /** ${1:Description placeholder} */
   requireSearchModule?: boolean
-  /** ${1:Description placeholder} */
   requireSocketModule?: boolean
 }

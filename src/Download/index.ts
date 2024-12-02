@@ -1,15 +1,15 @@
 import { IConfig } from '../TYPES/Config'
 import DownloadManager from './DownloadManager'
 
-/** ${1:Description placeholder} */
 const DEFAULT_VALUES = { requireSearchModule: false }
 
-// initialize
 /**
- * ${1:Description placeholder}
+ * Initializes the download process by creating an instance of DownloadManager.
  *
- * @param secMasterURL
- * @param [config=DEFAULT_VALUES]
+ * @param {string} secMasterURL - The URL of the sec master file to be downloaded.
+ * @param {IConfig} [config=DEFAULT_VALUES] - Optional configuration for the download manager.
+ * Defaults to `{ requireSearchModule: false }` if not provided.
+ * @returns {void}
  */
 export function initializeDownload(
   secMasterURL: string,

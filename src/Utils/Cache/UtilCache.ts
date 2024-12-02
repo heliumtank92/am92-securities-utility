@@ -6,7 +6,7 @@ import {
 import { TMasterData } from '../../TYPES/Store'
 
 /**
- * ${1:Description placeholder}
+ * Sets contenthash received from headers for sec master file in cache
  *
  * @async
  * @param value
@@ -30,7 +30,7 @@ export async function setCacheContentHash(
 }
 
 /**
- * ${1:Description placeholder}
+ * Retrieves the last cached content hash stored in the cache.
  *
  * @async
  * @returns
@@ -45,11 +45,11 @@ export async function getLastCachedContentHash() {
 }
 
 /**
- * ${1:Description placeholder}
+ * Compares the provided content hash with the one stored in the cache.
  *
  * @async
- * @param contentHash
- * @returns
+ * @param {string} contentHash - The content hash to compare.
+ * @returns {Promise<boolean>} True if the content hash matches the cached value, otherwise false.
  */
 export async function checkIfContentHashIsSame(contentHash: string) {
   const oldContentHash = await getLastCachedContentHash()
@@ -57,7 +57,7 @@ export async function checkIfContentHashIsSame(contentHash: string) {
 }
 
 /**
- * ${1:Description placeholder}
+ * Extracts the content hash from the given headers.
  *
  * @param headers
  * @returns
@@ -69,11 +69,11 @@ export function getContentHashFromHeaders(headers: any) {
 }
 
 /**
- * ${1:Description placeholder}
+ * Retrieves the cached response for a given URL if it exists.
  *
  * @async
- * @param secMasterURL
- * @returns
+ * @param {string} secMasterURL - The URL for which to fetch the cached response.
+ * @returns {Promise<any | undefined>} The cached response data, or undefined if not found.
  */
 export async function getCacheResponse(secMasterURL: string) {
   const cache = await caches.open(DEFAULT_CACHE_NAME)
@@ -84,12 +84,12 @@ export async function getCacheResponse(secMasterURL: string) {
 }
 
 /**
- * ${1:Description placeholder}
+ * Stores the provided data in the cache for a given URL.
  *
  * @async
- * @param secMasterURL
- * @param SEC_MASTER_ARRAY
- * @returns
+ * @param {string} secMasterURL - The URL to associate with the cached data.
+ * @param {TMasterData} SEC_MASTER_ARRAY - The data to be stored in the cache.
+ * @returns {Promise<void>}
  */
 export async function setCacheResponse(
   secMasterURL: string,
