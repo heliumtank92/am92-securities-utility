@@ -17,7 +17,7 @@ import { memoize } from './Utils/memoized'
 /**
  * Retrieves a script object by its `scriptId`, optionally populating additional properties.
  *
- * @param scriptId - The unique identifier of the script to retrieve.
+ *  @param scriptId - The unique identifier of the script to retrieve.
  * @param [populate] - An optional array of properties to include in the returned object.
  * @returns - The script object or `undefined` if not found.
  */
@@ -172,6 +172,7 @@ export const getDerivativeScripsByScripId = (
 
 /**
  * Retrieves a script object by its index value, optionally populating additional properties.
+ *
  *
  * @param scriptIdIndexValue - The index value associated with the script.
  * @param [populate=[]] - An optional array of properties to include in the returned object.

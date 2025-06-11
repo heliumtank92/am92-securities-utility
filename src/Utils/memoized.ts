@@ -4,6 +4,7 @@
 type AnyFunction = (...args: any[]) => any
 
 /**
+ * @ignore
  * Memoizes a function by caching its results based on the arguments provided.
  * Improves performance for functions with expensive computations by avoiding redundant calculations for the same inputs.
  *

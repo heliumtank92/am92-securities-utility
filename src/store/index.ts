@@ -12,7 +12,6 @@ let store: IStore = {}
  * Adds data to the store. It iterates over the keys of the input store and updates the store accordingly.
  * Each key corresponds to a specific type of data, and the function calls appropriate methods to update the store.
  *
- * @export
  * @param {IStore} inputStore The store object containing the data to be added.
  */
 export function addStore(inputStore: IStore) {
@@ -47,7 +46,6 @@ export function addStore(inputStore: IStore) {
 /**
  * Adds master data to the store.
  *
- * @export
  * @param {IStore["MASTER_DATA"]} data The master data to be added to the store.
  */
 export function addMasterData(data: IStore['MASTER_DATA']) {
@@ -57,7 +55,6 @@ export function addMasterData(data: IStore['MASTER_DATA']) {
 /**
  * Adds script ID index data to the store.
  *
- * @export
  * @param {IStore["SCRIPT_ID_INDEX"]} data The script ID index data to be added to the store.
  */
 export function addScripIdIndexes(data: IStore['SCRIPT_ID_INDEX']) {
@@ -67,7 +64,6 @@ export function addScripIdIndexes(data: IStore['SCRIPT_ID_INDEX']) {
 /**
  * Adds derivatives index data to the store.
  *
- * @export
  * @param {IStore["DERIVATIVES_INDEX"]} data The derivatives index data to be added to the store.
  */
 export function addDerivativeIndexes(data: IStore['DERIVATIVES_INDEX']) {
@@ -77,7 +73,6 @@ export function addDerivativeIndexes(data: IStore['DERIVATIVES_INDEX']) {
 /**
  * Adds ISIN code index data to the store.
  *
- * @export
  * @param {IStore["ISIN_CODE_INDEX"]} data The ISIN code index data to be added to the store.
  */
 export function addIsinCodeIndexex(data: IStore['ISIN_CODE_INDEX']) {
@@ -86,7 +81,6 @@ export function addIsinCodeIndexex(data: IStore['ISIN_CODE_INDEX']) {
 /**
  * Adds search string index data to the store.
  *
- * @export
  * @param {IStore["SEARCH_STRING_INDEX"]} data The search string index data to be added to the store.
  */
 export function addSearchStringIndexes(data: IStore['SEARCH_STRING_INDEX']) {
@@ -96,7 +90,6 @@ export function addSearchStringIndexes(data: IStore['SEARCH_STRING_INDEX']) {
 /**
  * Retrieves the master data from the store.
  *
- * @export
  * @returns {TMasterData} The master data stored in the store.
  */
 export function getMasterData() {
@@ -106,7 +99,6 @@ export function getMasterData() {
 /**
  * Retrieves the script ID index data from the store.
  *
- * @export
  * @returns {TScriptIdIndex} The script ID index data stored in the store.
  */
 export function getScripIndex() {
@@ -116,7 +108,6 @@ export function getScripIndex() {
 /**
  * Retrieves the derivatives index data from the store.
  *
- * @export
  * @returns {TDerivativesIndex} The derivatives index data stored in the store.
  */
 export function getDerivativeIndex() {
@@ -126,7 +117,6 @@ export function getDerivativeIndex() {
 /**
  * Retrieves the search string index data from the store.
  *
- * @export
  * @returns {TSearchStringIndex} The search string index data stored in the store.
  */
 export function getSearchIndex() {
@@ -136,7 +126,6 @@ export function getSearchIndex() {
 /**
  * Retrieves the ISIN code index data from the store.
  *
- * @export
  * @returns {IIsinCodeIndex} The ISIN code index data stored in the store.
  */
 export function getIsinIndex() {
@@ -146,7 +135,6 @@ export function getIsinIndex() {
 /**
  * Sets the security master initialization status in the store to true.
  *
- * @export
  */
 export function setSecurityMasterInitializationStatus() {
   store[STORE_KEYS.IS_SECURITY_MASTER_INITIALIZED] = true
@@ -155,7 +143,6 @@ export function setSecurityMasterInitializationStatus() {
 /**
  * Retrieves the security master initialization status from the store.
  *
- * @export
  * @returns {boolean} The security master initialization status.
  */
 export function getSecurityMasterInitializationStatus(): boolean {

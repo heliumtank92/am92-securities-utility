@@ -34,7 +34,6 @@ import { IConfig } from '../TYPES/Config'
  * This function uses a 'HEAD' request to fetch only the headers of the file. It helps in
  * checking if the file has been modified or not by comparing the content hash from the headers.
  *
- * @async
  * @param secMasterURL The URL of the security master data.
  * @returns The headers of the response, or null if an error occurs.
  */
@@ -66,7 +65,6 @@ export const fetchOnlyHeaders = async (secMasterURL: string) => {
  * If the content hash is the same and the response is already cached, it returns the cached response.
  * Otherwise, it fetches the new data, updates the cache, creates indexes, and sends the data back to the main thread.
  *
- * @async
  * @param secMasterURL The URL to fetch the security master data.
  * @param config Configuration options for indexing and handling the data.
  * @returns Void
@@ -85,7 +83,8 @@ export const fetchSecurityMaster = async (
   const cacheResponse = await getCacheResponse(secMasterURL)
 
   if (isContentHashSame && cacheResponse) {
-    return cacheResponse
+    generateIndexesAndPostMessage(cacheResponse, config)
+    return
   }
 
   const response = await fetch(secMasterURL, {
@@ -99,9 +98,22 @@ export const fetchSecurityMaster = async (
   setCacheResponse(secMasterURL, SEC_MASTER_ARRAY)
   setCacheContentHash(currentContentHash)
 
-  const indexes = await createIndexes(SEC_MASTER_ARRAY, config)
+  generateIndexesAndPostMessage(SEC_MASTER_ARRAY, config)
+}
+
+/**
+ * Generates indexes for the security master data and posts the data to the main thread.
+ *
+ * @param masterData The security master data to index.
+ * @param config Configuration options for indexing.
+ */
+function generateIndexesAndPostMessage(
+  masterData: TMasterData,
+  config?: IConfig
+) {
+  const indexes = createIndexes(masterData, config)
   const dataToPost = {
-    [STORE_KEYS.MASTER_DATA]: SEC_MASTER_ARRAY,
+    [STORE_KEYS.MASTER_DATA]: masterData,
     [STORE_KEYS.SCRIPT_ID_INDEX]: indexes.scriptIdIndex,
     [STORE_KEYS.DERIVATIVES_INDEX]: indexes.derivativesIndex,
     [STORE_KEYS.ISIN_CODE_INDEX]: indexes.isinCodeIndex,

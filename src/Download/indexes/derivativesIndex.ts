@@ -8,7 +8,24 @@ import {
   TMasterDataUnderlying
 } from '../../TYPES/Store'
 
+/**
+ * List of supported futures contract types
+ * @ignore
+ *
+ *  FUTSTK: Stock Futures
+ * FUTIDX: Index Futures
+ * FUTCUR: Currency Futures
+ * FUTCOM: Commodity Futures
+ */
 const FUTURES = ['FUTSTK', 'FUTIDX', 'FUTCUR', 'FUTCOM']
+/**
+ * Array of valid derivative option instrument types.
+ * @ignore
+ * OPTSTK: Stock Options
+ * OPTCUR: Currency Options
+ * OPTFUT: Futures Options
+ * OPTIDX: Index Options
+ */
 const OPTIONS = ['OPTSTK', 'OPTCUR', 'OPTFUT', 'OPTIDX']
 
 /**

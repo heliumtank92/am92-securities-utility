@@ -1,5 +1,5 @@
 /**
- * Enum representing the keys used to store different data segments in the store.
+ * @ignore Enum representing the keys used to store different data segments in the store.
  *
  * @enum
  */

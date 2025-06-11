@@ -8,7 +8,6 @@ import { TMasterData } from '../../TYPES/Store'
 /**
  * Sets contenthash received from headers for sec master file in cache
  *
- * @async
  * @param value
  * @param [cacheExpirationTime=DEFAULT_CACHE_EXPIRATION_TIME]
  * @returns
@@ -32,7 +31,6 @@ export async function setCacheContentHash(
 /**
  * Retrieves the last cached content hash stored in the cache.
  *
- * @async
  * @returns
  */
 export async function getLastCachedContentHash() {
@@ -47,7 +45,6 @@ export async function getLastCachedContentHash() {
 /**
  * Compares the provided content hash with the one stored in the cache.
  *
- * @async
  * @param {string} contentHash - The content hash to compare.
  * @returns {Promise<boolean>} True if the content hash matches the cached value, otherwise false.
  */
@@ -71,7 +68,6 @@ export function getContentHashFromHeaders(headers: any) {
 /**
  * Retrieves the cached response for a given URL if it exists.
  *
- * @async
  * @param {string} secMasterURL - The URL for which to fetch the cached response.
  * @returns {Promise<any | undefined>} The cached response data, or undefined if not found.
  */
@@ -86,7 +82,6 @@ export async function getCacheResponse(secMasterURL: string) {
 /**
  * Stores the provided data in the cache for a given URL.
  *
- * @async
  * @param {string} secMasterURL - The URL to associate with the cached data.
  * @param {TMasterData} SEC_MASTER_ARRAY - The data to be stored in the cache.
  * @returns {Promise<void>}

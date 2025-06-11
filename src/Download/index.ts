@@ -1,6 +1,9 @@
 import { IConfig } from '../TYPES/Config'
 import DownloadManager from './DownloadManager'
 
+/**
+ * Default configuration values for the module
+ */
 const DEFAULT_VALUES = { requireSearchModule: false }
 
 /**

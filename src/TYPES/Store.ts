@@ -7,6 +7,7 @@ import { IScript } from './Script'
  * on different exchanges (NSE, BSE, MCX, NCDEX).
  *
  * @enum {string}
+ * @readonly
  */
 export enum MASTER_DATA_SEGMENTS {
   NSE_EQ_EQUITY = 'NSE_EQ_EQUITY',
@@ -259,10 +260,40 @@ export type TIsinCodeIndex = {
  * @interface IStore
  */
 export interface IStore {
+  /**
+   * Represents the complete master data for all security segments, organized by the MASTER_DATA_SEGMENTS enum.
+   *
+   * @type {?TMasterData}
+   */
   [STORE_KEYS.MASTER_DATA]?: TMasterData
+  /**
+   * Maps script IDs to their corresponding indices in the master data segments.
+   *
+   * @type {?TScriptIdIndex}
+   */
   [STORE_KEYS.SCRIPT_ID_INDEX]?: TScriptIdIndex
+  /**
+   * Organizes derivative script IDs by type (futures or options) for efficient access.
+   *
+   * @type {?TDerivativesIndex}
+   */
   [STORE_KEYS.DERIVATIVES_INDEX]?: TDerivativesIndex
+  /**
+   * Provides a searchable index for chunked master data, including search strings, priorities, and corresponding exchange symbols.
+   *
+   * @type {?TSearchStringIndex}
+   */
   [STORE_KEYS.SEARCH_STRING_INDEX]?: TSearchStringIndex
+  /**
+   * Maps ISIN codes to their associated script IDs for efficient lookup.
+   *
+   * @type {?TIsinCodeIndex}
+   */
   [STORE_KEYS.ISIN_CODE_INDEX]?: TIsinCodeIndex
+  /**
+   * Indicates whether the security master data has been fully initialized.
+   *
+   * @type {?boolean}
+   */
   [STORE_KEYS.IS_SECURITY_MASTER_INITIALIZED]?: boolean
 }
