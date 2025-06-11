@@ -38,15 +38,15 @@ export function initialize(
   config: IConfig = DEFAULT_VALUES
 ) {
   if (secMasterURL) {
-    const { requireSearchModule = false } = config
+    // const { requireSearchModule = false, requireSocketModule = false } = config
 
     // NOTE: initializing security master download and preparing indexes
     initializeDownload(secMasterURL, config)
 
     // TODO: initiate the search worker setup here
-    if (requireSearchModule) {
-      initializeSearchWorker(config)
-    }
+    // if (requireSearchModule) {
+    //   initializeSearchWorker(config);
+    // }
     // TODO: initiate the socket worker setup here
     // if (requireSocketModule) {
     //   initializeSocket()
