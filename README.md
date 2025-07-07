@@ -67,7 +67,7 @@ try {
 
 `initializeSecMaster.ts`
 
-1. #### Add { requireSearchModule: true } flag to initialize function
+1. #### Pass `{ requireSearchModule: true }` to enable the fuzzy search module during Security Master initialization.
 
 ```typescript
 import { initialize } from '@am92/securities-utility'
@@ -94,8 +94,11 @@ import { searchManager } from '@am92/securities-utility'
 
 const handleSearch = async (searchString: string) => {
   const searchResult = await searchManager.search(searchString)
+  console.log(searchResult) // Array of matched security objects
 }
 ```
+
+<br />
 
 ### Notes:
 
