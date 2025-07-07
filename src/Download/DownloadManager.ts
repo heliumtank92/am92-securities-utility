@@ -69,7 +69,6 @@ export default class DownloadManager {
     if (action === 'INDEXES_CREATED') {
       const masterDataWithIndexes = event.data?.data
       // TODO: kept this for initial debug - remove it later
-      console.log(event.data, '>>>>>>>>>')
       addStore(masterDataWithIndexes)
       setSecurityMasterInitializationStatus()
       dispatchEvent(new Event(SECURITY_MASTER_INITIALIZED))

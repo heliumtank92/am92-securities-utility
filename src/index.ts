@@ -14,6 +14,8 @@ export {
   getScripsByScripIds
 } from './secMaster'
 
+export * from './Search/SearchManager'
+
 /** Configuration object defining the default values for system modules.
  * - `requireSearchModule`: Specifies whether the search module is required (default: `false`).
  * - `requireSocketModule`: Specifies whether the socket module is required (default: `false`).
@@ -38,19 +40,10 @@ export function initialize(
   config: IConfig = DEFAULT_VALUES
 ) {
   if (secMasterURL) {
-    // const { requireSearchModule = false, requireSocketModule = false } = config
-
     // NOTE: initializing security master download and preparing indexes
     initializeDownload(secMasterURL, config)
 
-    // TODO: initiate the search worker setup here
-    // if (requireSearchModule) {
-    //   initializeSearchWorker(config);
-    // }
     // TODO: initiate the socket worker setup here
-    // if (requireSocketModule) {
-    //   initializeSocket()
-    // }
     return
   }
   console.warn(INVALID_SECURITY_MASTER_URL)

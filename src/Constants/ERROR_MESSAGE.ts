@@ -15,3 +15,6 @@
 
 export const INVALID_SECURITY_MASTER_URL =
   'Invalid or No Security master URL provided'
+
+export const SECURITY_MASTER_NOT_INITIALIZED =
+  "Security master isn't downloaded or initialized"
