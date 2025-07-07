@@ -8,6 +8,9 @@ import {
 } from '../Constants/SEARCH_WORKER'
 
 /**
+ * @ignore
+ */
+/**
  * A worker-side class for handling fuzzy search operations.
  * Initializes chunked searchable datasets and runs fuzzysort on them.
  */
