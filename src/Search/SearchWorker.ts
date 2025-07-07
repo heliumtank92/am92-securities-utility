@@ -7,10 +7,21 @@ import {
   WORKER_CONSTANTS_OPTIONS
 } from '../Constants/SEARCH_WORKER'
 
+/**
+ * A worker-side class for handling fuzzy search operations.
+ * Initializes chunked searchable datasets and runs fuzzysort on them.
+ */
 class SearchWorker {
   FUSES: any[] = []
   INDEX: number = 0
 
+  /**
+   * Constructor for the SearchWorker class.
+   * Chunks the input data based on search priority and prepares fuzzysort indexes.
+   *
+   * @param searchData - Array of searchable objects
+   * @param index - Index of the worker
+   */
   constructor(searchData: any[], index: number) {
     this.INDEX = index
     // _getChunks call
@@ -22,6 +33,12 @@ class SearchWorker {
     })
   }
 
+  /**
+   * Performs fuzzy search across all chunked indexes and returns ranked results.
+   *
+   * @param searchString - The input string to search
+   * @returns Array of sorted search results
+   */
   search = (searchString: string) => {
     let searchResult: any[] = []
 
@@ -44,6 +61,13 @@ class SearchWorker {
     return searchResult
   }
 
+  /**
+   * Splits input data into multiple chunks based on `searchPriority` range.
+   * Chunking is guided by `WORKER_CHUNK_META`.
+   *
+   * @param searchData - Raw input array to chunk
+   * @returns Priority-based chunked data arrays
+   */
   _getChunks = (searchData: any[]) => {
     let chunks: any[] = []
     if (searchData.length <= MAX_FUSE_CHUNK_SIZE) {
@@ -84,8 +108,13 @@ class SearchWorker {
   }
 }
 
+// Global instance of SearchWorker inside the Web Worker scope
 let searchWorker: SearchWorker
 
+/**
+ * Web Worker message handler to support `init` and `search` commands.
+ * Initializes the worker with chunked data or performs a search and responds with results.
+ */
 self.onmessage = (event: MessageEvent) => {
   const { data } = event
   const { actionType = '' } = data

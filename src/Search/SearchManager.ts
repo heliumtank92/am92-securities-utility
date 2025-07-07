@@ -1,23 +1,21 @@
-// import secMaster from '~/src/Lib/SecMaster'
-// import { WORKER_CONSTANTS_OPTIONS } from '../Constants/SEARCH_WORKER'
+/**
+ * Manages search logic using Web Workers and Security Master initialization.
+ *
+ * It waits for the `SECURITY_MASTER_INITIALIZED` event and initializes workers for each search chunk.
+ * It then delegates search operations to the workers and collects their results.
+ */
+
 import { SECURITY_MASTER_NOT_INITIALIZED } from '../Constants/ERROR_MESSAGE'
-import {
-  // GLOBAL_SUCCESS_EVENT_NAME,
-  SECURITY_MASTER_INITIALIZED
-} from '../Constants/EVENTS'
+import { SECURITY_MASTER_INITIALIZED } from '../Constants/EVENTS'
 import { WORKER_CONSTANTS_OPTIONS } from '../Constants/SEARCH_WORKER'
 import { getScriptByScriptIdIndexValue } from '../secMaster'
 import { getSearchIndex, getSecurityMasterInitializationStatus } from '../store'
-// import AppStore from '~/src/Configurations/AppStore'
-// import { search } from '~/src/Redux/Search/Reducer'
 
 class SearchManager {
   STATE: 'INIT' | 'READY' = 'INIT'
   WORKER: Worker[] = []
   constructor() {
     const IS_SECURITY_MASTER_LOADED = getSecurityMasterInitializationStatus()
-    // const { __SEC_MASTER_LOADING__ } = (window as any) || {}
-    // if (__SEC_MASTER_LOADING__ === 'DONE') {
     if (IS_SECURITY_MASTER_LOADED) {
       this.initialize()
     } else {
@@ -25,6 +23,13 @@ class SearchManager {
     }
   }
 
+  /**
+   * Initializes the search manager:
+   * - Changes state to READY
+   * - Fetches chunked index data
+   * - Spawns a Web Worker per chunk
+   * - Sends the chunk data to each worker
+   */
   initialize = () => {
     this.STATE = 'READY'
 
@@ -51,6 +56,14 @@ class SearchManager {
     }
   }
 
+  /**
+   * Initiates a search by sending the search string to all workers.
+   * Waits for all responses, then flattens and resolves the final search result.
+   *
+   * @param searchString - The term to search for
+   * @returns Promise resolving to an array of matched search results
+   */
+
   search = async (searchString: string) => {
     return new Promise(resolve => {
       if (!getSecurityMasterInitializationStatus()) {
@@ -74,7 +87,6 @@ class SearchManager {
           workerResults[workerIndex] = searchResult
           if (resultCount === this.WORKER.length) {
             const searchResult = this._flattenResult(workerResults)
-            // AppStore.dispatch(search(searchResult))
             console.log(searchResult, 'searchResult')
             resolve(searchResult)
           }
@@ -83,6 +95,12 @@ class SearchManager {
     })
   }
 
+  /**
+   * Combines and enriches raw results from all workers into a single result array.
+   *
+   * @param workerResults - Raw result arrays from workers
+   * @returns Flattened and enriched result array
+   */
   _flattenResult = (workerResults: any[]) => {
     const searchResult: any[] = []
 
@@ -96,5 +114,8 @@ class SearchManager {
   }
 }
 
+/**
+ * Singleton instance of SearchManager exported for use across app.
+ */
 const searchManager = new SearchManager()
 export { searchManager }
