@@ -1161,7 +1161,7 @@ Otherwise, it fetches the new data, updates the cache, creates indexes, and send
     derivativeItemIndex?: number,
     derivativeItem?: TMasterDataDerivativesScript
   ) &#x3D;&gt; {
-    // if not Derivative return
+    // if not Derivative return and continue with next item
     if (!derivativeItem) {
       return
     }
