@@ -1,6 +1,6 @@
 {
   "name": "@am92/securities-utility",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A utility package for securities applications",
   "sideEffects": false,
   "types": "dist/index.d.ts",
