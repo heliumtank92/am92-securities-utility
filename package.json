@@ -1,6 +1,6 @@
 {
   "name": "@am92/securities-utility",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A utility package for securities applications",
   "sideEffects": false,
   "types": "dist/index.d.ts",
@@ -59,18 +59,11 @@
     "securities",
     "Sec Master"
   ],
-  "source": {
-    "include": [
-      "src"
-    ],
-    "includePattern": ".+\\.ts?$",
-    "excludePattern": "(node_modules|dist)"
-  },
   "opts": {
     "destination": "./docs",
     "recurse": true
   },
   "dependencies": {
-    "fuzzysort": "^3.1.0"
+    "fuzzysort": "2.0.4"
   }
 }
