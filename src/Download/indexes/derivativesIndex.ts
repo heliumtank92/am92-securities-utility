@@ -12,7 +12,7 @@ import {
  * List of supported futures contract types
  * @ignore
  *
- *  FUTSTK: Stock Futures
+ * FUTSTK: Stock Futures
  * FUTIDX: Index Futures
  * FUTCUR: Currency Futures
  * FUTCOM: Commodity Futures
@@ -49,7 +49,7 @@ export const derivativesIndexHandler = (): TIndexHandler<TDerivativesIndex> => {
     derivativeItemIndex?: number,
     derivativeItem?: TMasterDataDerivativesScript
   ) => {
-    // if not Derivative return
+    // if not Derivative return and continue with next item
     if (!derivativeItem) {
       return
     }
