@@ -9,9 +9,12 @@ import {
 } from '../../TYPES/Store'
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of ISIN codes by associating them with their corresponding
+ * script IDs. This index is specifically designed for equity data and excludes
+ * derivatives and underlying segments.
  *
- * @returns
+ * @returns {TIndexHandler<TIsinCodeIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const isinCodeIndexHandler = (): TIndexHandler<TIsinCodeIndex> => {
   const index: TIsinCodeIndex = {}

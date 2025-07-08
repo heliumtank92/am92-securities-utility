@@ -4,7 +4,7 @@ import {
   getMasterData,
   getScripIndex
 } from './store/index'
-import { TScript, TScriptPopulate } from './TYPES/Script'
+import { IScript, TScriptPopulate } from './TYPES/Script'
 import {
   MASTER_DATA_SEGMENTS,
   TMasterDataDerivatives,
@@ -15,14 +15,14 @@ import {
 import { memoize } from './Utils/memoized'
 
 /**
- * ${1:Description placeholder}
+ * Retrieves a script object by its `scriptId`, optionally populating additional properties.
  *
- * @param scriptId
- * @param [populate]
- * @returns
+ *  @param scriptId - The unique identifier of the script to retrieve.
+ * @param [populate] - An optional array of properties to include in the returned object.
+ * @returns - The script object or `undefined` if not found.
  */
 const _getScripByScripId = (
-  scriptId: TScript['scriptId'],
+  scriptId: IScript['scriptId'],
   populate?: TScriptPopulate
 ) => {
   const scriptIdIndex = getScripIndex()
@@ -42,18 +42,20 @@ const _getScripByScripId = (
   return getScriptByScriptIdIndexValue(locations, populate)
 }
 
-/** ${1:Description placeholder} */
+/**
+ * Memoized version of `_getScripByScripId` for optimized retrieval.
+ */
 export const getScripByScripId = memoize(_getScripByScripId, 100)
 
 /**
- * ${1:Description placeholder}
+ * Retrieves multiple scripts by their `scriptId`s, optionally populating additional properties.
  *
- * @param scriptIds
- * @param [populate]
- * @returns
+ * @param scriptIds - An array of `scriptId`s to retrieve.
+ * @param [populate] - An optional array of properties to include in the returned objects.
+ * @returns An array of script objects.
  */
 export const getScripsByScripIds = (
-  scriptIds: TScript['scriptId'][],
+  scriptIds: IScript['scriptId'][],
   populate?: TScriptPopulate
 ) => {
   if (!scriptIds) {
@@ -67,14 +69,14 @@ export const getScripsByScripIds = (
 }
 
 /**
- * ${1:Description placeholder}
+ * Retrieves scripts by their ISIN code, optionally populating additional properties.
  *
- * @param isinCode
- * @param [populate]
- * @returns
+ * @param isinCode - The ISIN code to search for.
+ * @param [populate] - An optional array of properties to include in the returned objects.
+ * @returns An array of script objects or an empty array if none are found.
  */
 export const getScripsByIsinCode = (
-  isinCode: TScript['isinCode'],
+  isinCode: IScript['isinCode'],
   populate?: TScriptPopulate
 ) => {
   const isinCodeIndex = getIsinIndex()
@@ -94,15 +96,15 @@ export const getScripsByIsinCode = (
 }
 
 /**
- * ${1:Description placeholder}
+ * Retrieves derivative scripts associated with a specific `scriptId`, filtered by derivative type.
  *
- * @param scriptId
- * @param [derivativeType="BOTH"]
- * @param [populate]
- * @returns
+ * @param scriptId - The unique identifier of the script to retrieve derivatives for.
+ * @param [derivativeType="BOTH"] - The type of derivatives to retrieve: `FUTURES`, `OPTIONS`, or `BOTH`.
+ * @param [populate] - An optional array of properties to include in the returned objects.
+ * @returns An object containing arrays of derivative scripts by type, or an empty object if none are found.
  */
 export const getDerivativeScripsByScripId = (
-  scriptId: TScript['scriptId'],
+  scriptId: IScript['scriptId'],
   derivativeType: 'FUTURES' | 'OPTIONS' | 'BOTH' = 'BOTH',
   populate?: TScriptPopulate
 ) => {
@@ -114,7 +116,7 @@ export const getDerivativeScripsByScripId = (
 
   const { underlying, isinCode, exchange, instrumentType } = script
 
-  let underlyingId: TScript['underlying'] = underlying
+  let underlyingId: IScript['underlying'] = underlying
   if (!underlyingId) {
     if (exchange === 'NSE' && instrumentType === 'EQUITY') {
       underlyingId = scriptId
@@ -169,19 +171,20 @@ export const getDerivativeScripsByScripId = (
 }
 
 /**
- * ${1:Description placeholder}
+ * Retrieves a script object by its index value, optionally populating additional properties.
  *
- * @param scriptIdIndexValue
- * @param [populate=[]]
- * @returns
+ *
+ * @param scriptIdIndexValue - The index value associated with the script.
+ * @param [populate=[]] - An optional array of properties to include in the returned object.
+ * @returns The script object or a partial object with populated properties, or `undefined` if not found.
  */
 export const getScriptByScriptIdIndexValue = (
   scriptIdIndexValue: TScriptIdIndexValue,
   populate: TScriptPopulate = []
-): TScript | undefined | Pick<TScript, TScriptPopulate[number]> => {
+): IScript | undefined | Pick<IScript, TScriptPopulate[number]> => {
   const { instrumentType } = _getSegmentDetails(scriptIdIndexValue[0])
 
-  let script: TScript | undefined
+  let script: IScript | undefined
   if (instrumentType === 'EQUITY') {
     script = _mapFlattenEquityScriptToScript(scriptIdIndexValue)
   } else if (instrumentType === 'UNDERLYING') {
@@ -193,7 +196,7 @@ export const getScriptByScriptIdIndexValue = (
   if (populate.length && script) {
     const scriptObj = Object.fromEntries(
       populate.filter(key => key in script).map(key => [key, script[key]])
-    ) as Pick<TScript, keyof TScript>
+    ) as Pick<IScript, keyof IScript>
     return scriptObj
   }
 
@@ -201,18 +204,18 @@ export const getScriptByScriptIdIndexValue = (
 }
 
 /**
- * ${1:Description placeholder}
+ * Parses and retrieves the segment details from a master data segment identifier.
  *
- * @param masterDataSegment
- * @returns
+ * @param masterDataSegment - The segment identifier to parse.
+ * @returns An object containing the segment, exchange, and instrument type.
  */
 const _getSegmentDetails = (masterDataSegment: MASTER_DATA_SEGMENTS) => {
   const [exchange, segment, instrumentType] = masterDataSegment.split('_') as [
-    TScript['exchange'],
-    TScript['segment'],
-    TScript['instrumentType']
+    IScript['exchange'],
+    IScript['segment'],
+    IScript['instrumentType']
   ]
-  const scriptObj: Pick<TScript, 'segment' | 'exchange' | 'instrumentType'> = {
+  const scriptObj: Pick<IScript, 'segment' | 'exchange' | 'instrumentType'> = {
     segment,
     exchange,
     instrumentType
@@ -221,10 +224,10 @@ const _getSegmentDetails = (masterDataSegment: MASTER_DATA_SEGMENTS) => {
 }
 
 /**
- * ${1:Description placeholder}
+ * Maps and flattens equity script data to a script object.
  *
- * @param locations
- * @returns
+ * @param locations - The script index value to map.
+ * @returns The script object or `undefined` if not found.
  */
 const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
   const masterData = getMasterData()
@@ -271,7 +274,7 @@ const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
     fiftyTwoWeekHigh
   ] = flattenEquityScript
 
-  const scriptObj: TScript = {
+  const scriptObj: IScript = {
     segment,
     exchange,
     instrumentType,
@@ -306,10 +309,10 @@ const _mapFlattenEquityScriptToScript = (locations: TScriptIdIndexValue) => {
 }
 
 /**
- * ${1:Description placeholder}
+ * Maps and flattens underlying script data to a script object.
  *
- * @param locations
- * @returns
+ * @param locations - The script index value to map.
+ * @returns The script object or `undefined` if not found.
  */
 const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
   const masterData = getMasterData()
@@ -353,7 +356,7 @@ const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
     fiftyTwoWeekHigh
   ] = flattenEquityScript
 
-  const scriptObj: TScript = {
+  const scriptObj: IScript = {
     segment,
     exchange,
     instrumentType,
@@ -385,10 +388,10 @@ const _mapFlattenUnderlingScriptToScript = (locations: TScriptIdIndexValue) => {
 }
 
 /**
- * ${1:Description placeholder}
+ * Maps and flattens derivative script data to a script object.
  *
- * @param locations
- * @returns
+ * @param locations - The script index value to map.
+ * @returns The script object or `undefined` if not found.
  */
 const _mapFlattenDerivativeScriptToScript = (
   locations: TScriptIdIndexValue
@@ -446,7 +449,7 @@ const _mapFlattenDerivativeScriptToScript = (
       fiftyTwoWeekHigh
     ] = flattenDerivativeScript
 
-    const scriptObj: TScript = {
+    const scriptObj: IScript = {
       segment,
       exchange,
       instrumentType,

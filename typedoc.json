@@ -1,0 +1,20 @@
+{
+  "entryPoints": ["src/*"],
+  "entryPointStrategy": "expand",
+  "exclude": [
+    "src/store",
+    "src/Constants",
+    "src/Utils",
+    "src/Download",
+    "src/secMaster.ts"
+  ],
+  "out": "documentation",
+  "includeVersion": true,
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
+  "projectDocuments": ["README.md"]
+}

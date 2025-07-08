@@ -1,6 +1,6 @@
 import { getChunkIndex } from '../../Constants/SEARCH_WORKER'
 import { TIndexHandler } from '../../TYPES/IndexHandler'
-import { TScript } from '../../TYPES/Script'
+import { IScript } from '../../TYPES/Script'
 import {
   MASTER_DATA_SEGMENTS,
   TMasterDataDerivatives,
@@ -12,9 +12,12 @@ import {
 } from '../../TYPES/Store'
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of searchable strings for scripts, organizing them by
+ * search priority into chunked groups. This is useful for efficient search
+ * and retrieval operations.
  *
- * @returns
+ * @returns {TIndexHandler<TSearchStringIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const searchStringIndexHandler =
   (): TIndexHandler<TSearchStringIndex> => {
@@ -30,11 +33,11 @@ export const searchStringIndexHandler =
       derivativeItemIndex?: number,
       derivativeItem?: TMasterDataDerivativesScript
     ) => {
-      let exchangeSymbol: TScript['exchangeSymbol']
-      let searchString: TScript['searchable']
-      let searchPriority: TScript['searchPriority']
+      let exchangeSymbol: IScript['exchangeSymbol']
+      let searchString: IScript['searchable']
+      let searchPriority: IScript['searchPriority']
       let map: TScriptIdIndexValue
-      let isAslAllowed: TScript['aslAllowed']
+      let isAslAllowed: IScript['aslAllowed']
 
       if (segmentKey.includes('EQUITY')) {
         const item = itemData as TMasterDataEquity

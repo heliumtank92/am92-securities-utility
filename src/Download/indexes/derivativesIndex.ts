@@ -8,15 +8,33 @@ import {
   TMasterDataUnderlying
 } from '../../TYPES/Store'
 
-/** ${1:Description placeholder} */
+/**
+ * List of supported futures contract types
+ * @ignore
+ *
+ *  FUTSTK: Stock Futures
+ * FUTIDX: Index Futures
+ * FUTCUR: Currency Futures
+ * FUTCOM: Commodity Futures
+ */
 const FUTURES = ['FUTSTK', 'FUTIDX', 'FUTCUR', 'FUTCOM']
-/** ${1:Description placeholder} */
+/**
+ * Array of valid derivative option instrument types.
+ * @ignore
+ * OPTSTK: Stock Options
+ * OPTCUR: Currency Options
+ * OPTFUT: Futures Options
+ * OPTIDX: Index Options
+ */
 const OPTIONS = ['OPTSTK', 'OPTCUR', 'OPTFUT', 'OPTIDX']
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of derivatives data by organizing futures and options
+ * based on their underlying assets. This is useful for quick lookups and
+ * categorization of derivative scripts.
  *
- * @returns
+ * @returns {TIndexHandler<TDerivativesIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const derivativesIndexHandler = (): TIndexHandler<TDerivativesIndex> => {
   const index: TDerivativesIndex = {}

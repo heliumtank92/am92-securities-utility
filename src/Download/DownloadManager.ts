@@ -1,27 +1,48 @@
-import { addStore } from '../store'
+import { SECURITY_MASTER_INITIALIZED } from '../Constants/EVENTS'
+import { addStore, setSecurityMasterInitializationStatus } from '../store'
 import { IConfig } from '../TYPES/Config'
 
 // TODO: move this to another file
-/** ${1:Description placeholder} */
+/**
+ * Type representing the structure of messages received from the worker.
+ *
+ * This type defines the structure of the messages that the main thread receives from the web worker.
+ * It includes an `action` string that identifies the type of message, and an optional `data` field
+ * which contains additional information related to the action. The shape of `data` depends on the specific action.
+ *
+ * @typedef {Object} TMessageEvent
+ * @property {string} action - The type of message or action being communicated from the worker.
+ * @property {any} [data] - Optional data associated with the action. The structure of the data depends on the action.
+ */
 type TMessageEvent = {
   action: string
   data?: any
 }
 
 /**
- * ${1:Description placeholder}
+ * Class responsible for managing the download and processing of security master data.
  *
- * @class
+ * This class uses a web worker to handle downloading and processing data in the background.
+ * It sends messages to the worker to initialize the process, and handles messages back from the worker
+ * to update the application's store and trigger necessary events when the download is complete.
+ *
+ * @class DownloadManager
  */
 export default class DownloadManager {
-  /** ${1:Description placeholder} */
-  worker: any
+  /**
+   * Web Worker instance responsible for downloading and processing security master data
+   *
+   * @private
+   * @type {Worker}
+   * Handles background tasks including data fetching and processing without blocking the main thread
+   */
+  worker: Worker
   /**
    * Creates an instance of DownloadManager.
    *
-   * @constructor
-   * @param secMasterURL
-   * @param config
+   * @param {string} secMasterURL - The URL to fetch the security master data from. Must be a valid URL.
+   * @param {IConfig} config - Configuration object defining the worker's behavior.
+   * @throws Will throw an error if the worker cannot be initialized due to invalid arguments or browser restrictions.
    */
   constructor(secMasterURL: string, config: IConfig) {
     this.worker = new Worker(new URL('./DownloadWorker.js', import.meta.url), {
@@ -34,22 +55,36 @@ export default class DownloadManager {
   }
 
   /**
-   * ${1:Description placeholder}
+   * Handles messages received from the worker.
    *
-   * @param event
+   * @param {MessageEvent<TMessageEvent>} event - The event object containing the message data from the worker.
+   * Processes the 'INDEXES_CREATED' action to:
+   * - Add the processed security master data with indexes to the application's store.
+   * - Update the security master initialization status in the application's state.
+   * - Dispatch the `SECURITY_MASTER_INITIALIZED` event to notify the system.
+   *
    */
   onMessage = (event: MessageEvent<TMessageEvent>) => {
     const { action } = event.data
     if (action === 'INDEXES_CREATED') {
       const masterDataWithIndexes = event.data?.data
-      // REVIEW: add to store - remove this console
-      console.log(event.data, '>>>>>>>>>')
+      // TODO: kept this for initial debug - remove it later
       addStore(masterDataWithIndexes)
+      setSecurityMasterInitializationStatus()
+      dispatchEvent(new Event(SECURITY_MASTER_INITIALIZED))
     }
   }
 
-  /** ${1:Description placeholder} */
+  /**
+   * Handles errors from the worker.
+   *
+   * Logs the error and provides a grouped console output for easier debugging.
+   * Developers should monitor for this in case of unexpected worker behavior.
+   *
+   */
   onError = () => {
+    console.group('Error in worker')
     console.log('error')
+    console.groupEnd()
   }
 }

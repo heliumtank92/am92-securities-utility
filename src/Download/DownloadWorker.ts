@@ -29,11 +29,13 @@ import { STORE_KEYS } from '../Constants/STORE_KEYS'
 import { IConfig } from '../TYPES/Config'
 
 /**
- * ${1:Description placeholder}
+ * Fetches the headers from the provided security master URL without retrieving the entire file.
  *
- * @async
- * @param secMasterURL
- * @returns
+ * This function uses a 'HEAD' request to fetch only the headers of the file. It helps in
+ * checking if the file has been modified or not by comparing the content hash from the headers.
+ *
+ * @param secMasterURL The URL of the security master data.
+ * @returns The headers of the response, or null if an error occurs.
  */
 export const fetchOnlyHeaders = async (secMasterURL: string) => {
   try {
@@ -57,12 +59,15 @@ export const fetchOnlyHeaders = async (secMasterURL: string) => {
 }
 
 /**
- * ${1:Description placeholder}
+ * Fetches the security master data from the provided URL, checks the file's content hash,
+ * and updates the cache if the file content has changed.
  *
- * @async
- * @param secMasterURL
- * @param config
- * @returns
+ * If the content hash is the same and the response is already cached, it returns the cached response.
+ * Otherwise, it fetches the new data, updates the cache, creates indexes, and sends the data back to the main thread.
+ *
+ * @param secMasterURL The URL to fetch the security master data.
+ * @param config Configuration options for indexing and handling the data.
+ * @returns Void
  */
 export const fetchSecurityMaster = async (
   secMasterURL: string,
@@ -78,7 +83,8 @@ export const fetchSecurityMaster = async (
   const cacheResponse = await getCacheResponse(secMasterURL)
 
   if (isContentHashSame && cacheResponse) {
-    return cacheResponse
+    generateIndexesAndPostMessage(cacheResponse, config)
+    return
   }
 
   const response = await fetch(secMasterURL, {
@@ -92,9 +98,22 @@ export const fetchSecurityMaster = async (
   setCacheResponse(secMasterURL, SEC_MASTER_ARRAY)
   setCacheContentHash(currentContentHash)
 
-  const indexes = await createIndexes(SEC_MASTER_ARRAY, config)
+  generateIndexesAndPostMessage(SEC_MASTER_ARRAY, config)
+}
+
+/**
+ * Generates indexes for the security master data and posts the data to the main thread.
+ *
+ * @param masterData The security master data to index.
+ * @param config Configuration options for indexing.
+ */
+function generateIndexesAndPostMessage(
+  masterData: TMasterData,
+  config?: IConfig
+) {
+  const indexes = createIndexes(masterData, config)
   const dataToPost = {
-    [STORE_KEYS.MASTER_DATA]: SEC_MASTER_ARRAY,
+    [STORE_KEYS.MASTER_DATA]: masterData,
     [STORE_KEYS.SCRIPT_ID_INDEX]: indexes.scriptIdIndex,
     [STORE_KEYS.DERIVATIVES_INDEX]: indexes.derivativesIndex,
     [STORE_KEYS.ISIN_CODE_INDEX]: indexes.isinCodeIndex,
@@ -108,11 +127,15 @@ export const fetchSecurityMaster = async (
 }
 
 /**
- * ${1:Description placeholder}
+ * Creates indexes for different segments of the security master data based on configuration options.
  *
- * @param masterData
- * @param [options]
- * @returns
+ * This function creates various indexes like `scriptIdIndex`, `isinCodeIndex`, `derivativesIndex`,
+ * and optionally `searchStringIndex`, depending on the `requireSearchModule` flag in the configuration.
+ * It loops through the segments of the security master data, processes each item, and adds it to the corresponding index.
+ *
+ * @param masterData The security master data to index.
+ * @param options Configuration options for index creation.
+ * @returns An object containing the created indexes.
  */
 const createIndexes = (
   masterData: TMasterData,

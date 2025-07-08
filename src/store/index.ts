@@ -1,40 +1,40 @@
 import { STORE_KEYS } from '../Constants/STORE_KEYS'
-import { TStore } from '../TYPES/Store'
+import { IStore } from '../TYPES/Store'
 
 /**
  * Description placeholder
  *
- * @type {TStore}
+ * @type {IStore}
  */
-let store: TStore = {}
+let store: IStore = {}
 
 /**
- * Description placeholder
+ * Adds data to the store. It iterates over the keys of the input store and updates the store accordingly.
+ * Each key corresponds to a specific type of data, and the function calls appropriate methods to update the store.
  *
- * @export
- * @param {TStore} inputStore
+ * @param {IStore} inputStore The store object containing the data to be added.
  */
-export function addStore(inputStore: TStore) {
+export function addStore(inputStore: IStore) {
   if (!inputStore) return
   for (const key in inputStore) {
     if (Object.prototype.hasOwnProperty.call(inputStore, key)) {
       switch (key) {
         case STORE_KEYS.MASTER_DATA:
-          addMasterData(inputStore[key] as TStore['MASTER_DATA'])
+          addMasterData(inputStore[key] as IStore['MASTER_DATA'])
           break
         case STORE_KEYS.SCRIPT_ID_INDEX:
-          addScripIdIndexes(inputStore[key] as TStore['SCRIPT_ID_INDEX'])
+          addScripIdIndexes(inputStore[key] as IStore['SCRIPT_ID_INDEX'])
           break
         case STORE_KEYS.DERIVATIVES_INDEX:
-          addDerivativeIndexes(inputStore[key] as TStore['DERIVATIVES_INDEX'])
+          addDerivativeIndexes(inputStore[key] as IStore['DERIVATIVES_INDEX'])
           break
         case STORE_KEYS.SEARCH_STRING_INDEX:
           addSearchStringIndexes(
-            inputStore[key] as TStore['SEARCH_STRING_INDEX']
+            inputStore[key] as IStore['SEARCH_STRING_INDEX']
           )
           break
         case STORE_KEYS.ISIN_CODE_INDEX:
-          addIsinCodeIndexex(inputStore[key] as TStore['ISIN_CODE_INDEX'])
+          addIsinCodeIndexex(inputStore[key] as IStore['ISIN_CODE_INDEX'])
           break
         default:
           break
@@ -44,102 +44,109 @@ export function addStore(inputStore: TStore) {
 }
 
 /**
- * Description placeholder
+ * Adds master data to the store.
  *
- * @export
- * @param {TStore["MASTER_DATA"]} data
+ * @param {IStore["MASTER_DATA"]} data The master data to be added to the store.
  */
-export function addMasterData(data: TStore['MASTER_DATA']) {
+export function addMasterData(data: IStore['MASTER_DATA']) {
   store[STORE_KEYS.MASTER_DATA] = data
 }
 
 /**
- * Description placeholder
+ * Adds script ID index data to the store.
  *
- * @export
- * @param {TStore["SCRIPT_ID_INDEX"]} data
+ * @param {IStore["SCRIPT_ID_INDEX"]} data The script ID index data to be added to the store.
  */
-export function addScripIdIndexes(data: TStore['SCRIPT_ID_INDEX']) {
+export function addScripIdIndexes(data: IStore['SCRIPT_ID_INDEX']) {
   store[STORE_KEYS.SCRIPT_ID_INDEX] = data
 }
 
 /**
- * Description placeholder
+ * Adds derivatives index data to the store.
  *
- * @export
- * @param {TStore["DERIVATIVES_INDEX"]} data
+ * @param {IStore["DERIVATIVES_INDEX"]} data The derivatives index data to be added to the store.
  */
-export function addDerivativeIndexes(data: TStore['DERIVATIVES_INDEX']) {
+export function addDerivativeIndexes(data: IStore['DERIVATIVES_INDEX']) {
   store[STORE_KEYS.DERIVATIVES_INDEX] = data
 }
 
 /**
- * Description placeholder
+ * Adds ISIN code index data to the store.
  *
- * @export
- * @param {TStore["ISIN_CODE_INDEX"]} data
+ * @param {IStore["ISIN_CODE_INDEX"]} data The ISIN code index data to be added to the store.
  */
-export function addIsinCodeIndexex(data: TStore['ISIN_CODE_INDEX']) {
+export function addIsinCodeIndexex(data: IStore['ISIN_CODE_INDEX']) {
   store[STORE_KEYS.ISIN_CODE_INDEX] = data
 }
 /**
- * Description placeholder
+ * Adds search string index data to the store.
  *
- * @export
- * @param {TStore["SEARCH_STRING_INDEX"]} data
+ * @param {IStore["SEARCH_STRING_INDEX"]} data The search string index data to be added to the store.
  */
-export function addSearchStringIndexes(data: TStore['SEARCH_STRING_INDEX']) {
+export function addSearchStringIndexes(data: IStore['SEARCH_STRING_INDEX']) {
   store[STORE_KEYS.SEARCH_STRING_INDEX] = data
 }
 
 /**
- * Description placeholder
+ * Retrieves the master data from the store.
  *
- * @export
- * @returns {TMasterData}
+ * @returns {TMasterData} The master data stored in the store.
  */
 export function getMasterData() {
   return store[STORE_KEYS.MASTER_DATA] || {}
 }
 
 /**
- * Description placeholder
+ * Retrieves the script ID index data from the store.
  *
- * @export
- * @returns {TScriptIdIndex}
+ * @returns {TScriptIdIndex} The script ID index data stored in the store.
  */
 export function getScripIndex() {
   return store[STORE_KEYS.SCRIPT_ID_INDEX] || {}
 }
 
 /**
- * Description placeholder
+ * Retrieves the derivatives index data from the store.
  *
- * @export
- * @returns {TDerivativesIndex}
+ * @returns {TDerivativesIndex} The derivatives index data stored in the store.
  */
 export function getDerivativeIndex() {
   return store[STORE_KEYS.DERIVATIVES_INDEX] || {}
 }
 
 /**
- * Description placeholder
+ * Retrieves the search string index data from the store.
  *
- * @export
- * @returns {TSearchStringIndex}
+ * @returns {TSearchStringIndex} The search string index data stored in the store.
  */
 export function getSearchIndex() {
   return store[STORE_KEYS.SEARCH_STRING_INDEX] || {}
 }
 
 /**
- * Description placeholder
+ * Retrieves the ISIN code index data from the store.
  *
- * @export
- * @returns {TIsinCodeIndex}
+ * @returns {IIsinCodeIndex} The ISIN code index data stored in the store.
  */
 export function getIsinIndex() {
   return store[STORE_KEYS.ISIN_CODE_INDEX] || {}
+}
+
+/**
+ * Sets the security master initialization status in the store to true.
+ *
+ */
+export function setSecurityMasterInitializationStatus() {
+  store[STORE_KEYS.IS_SECURITY_MASTER_INITIALIZED] = true
+}
+
+/**
+ * Retrieves the security master initialization status from the store.
+ *
+ * @returns {boolean} The security master initialization status.
+ */
+export function getSecurityMasterInitializationStatus(): boolean {
+  return store[STORE_KEYS.IS_SECURITY_MASTER_INITIALIZED] as boolean
 }
 
 export default store

@@ -1,0 +1,16 @@
+# ---------------------------------------------------------------------------- #
+#                                    ROADMAP                                   #
+# ---------------------------------------------------------------------------- #
+
+1. Logging Console Errors
+
+2. Handling Failure Of Security Master Download
+
+  Approach 1:
+  event based where we can expose and dispatch an event and the integrator can call the initialize function accordingly
+
+  Approach 2:
+  To enable auto Download of file automatically after Failure for x amount of time
+
+
+

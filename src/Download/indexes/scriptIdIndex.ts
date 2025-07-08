@@ -10,9 +10,12 @@ import {
 } from '../../TYPES/Store'
 
 /**
- * ${1:Description placeholder}
+ * Handles indexing of script IDs by associating them with metadata such as segment keys,
+ * item indices, and derivative item indices (if applicable). This allows quick lookup
+ * of script metadata based on their IDs.
  *
- * @returns
+ * @returns {TIndexHandler<TScriptIdIndex>} An object containing methods to add rows to the index
+ * and retrieve the indexed data.
  */
 export const scriptIdIndexHandler = (): TIndexHandler<TScriptIdIndex> => {
   const index: TScriptIdIndex = {}
