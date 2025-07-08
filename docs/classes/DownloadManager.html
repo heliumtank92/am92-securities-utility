@@ -1,0 +1,572 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@am92/securities-utility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@am92/securities-utility documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >DownloadManager</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/Download/DownloadManager.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Class responsible for managing the download and processing of security master data.</p>
+<p>This class uses a web worker to handle downloading and processing data in the background.
+It sends messages to the worker to initialize the process, and handles messages back from the worker
+to update the application&#39;s store and trigger necessary events when the download is complete.</p>
+
+            </p>
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onError" >onError</a>
+                            </li>
+                            <li>
+                                <a href="#onMessage" >onMessage</a>
+                            </li>
+                            <li>
+                                <a href="#worker" >worker</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(secMasterURL: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/IConfig.html" target="_self">IConfig</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/Download/DownloadManager.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of DownloadManager.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>secMasterURL</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The URL to fetch the security master data from. Must be a valid URL.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/IConfig.html" target="_self" >IConfig</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Configuration object defining the worker&#39;s behavior.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onError"></a>
+                    <span class="name">
+                        <span ><b>onError</b></span>
+                        <a href="#onError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/Download/DownloadManager.ts:85</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles errors from the worker.</p>
+<p>Logs the error and provides a grouped console output for easier debugging.
+Developers should monitor for this in case of unexpected worker behavior.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onMessage"></a>
+                    <span class="name">
+                        <span ><b>onMessage</b></span>
+                        <a href="#onMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/Download/DownloadManager.ts:67</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles messages received from the worker.</p>
+<p>Processes the &#39;INDEXES_CREATED&#39; action to:</p>
+<ul>
+<li>Add the processed security master data with indexes to the application&#39;s store.</li>
+<li>Update the security master initialization status in the application&#39;s state.</li>
+<li>Dispatch the <code>SECURITY_MASTER_INITIALIZED</code> event to notify the system.</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>event</td>
+                                                    <td>
+                                                            <code><ul>
+<li>The event object containing the message data from the worker.
+Processes the &#39;INDEXES_CREATED&#39; action to:</li>
+<li>Add the processed security master data with indexes to the application&#39;s store.</li>
+<li>Update the security master initialization status in the application&#39;s state.</li>
+<li>Dispatch the <code>SECURITY_MASTER_INITIALIZED</code> event to notify the system.</li>
+</ul>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="worker"></a>
+                    <span class="name">
+                        <span ><b>worker</b></span>
+                        <a href="#worker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Worker</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/Download/DownloadManager.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Web Worker instance responsible for downloading and processing security master data</p>
+<p>Handles background tasks including data fetching and processing without blocking the main thread</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SECURITY_MASTER_INITIALIZED } from &#x27;../Constants/EVENTS&#x27;
+import { addStore, setSecurityMasterInitializationStatus } from &#x27;../store&#x27;
+import { IConfig } from &#x27;../TYPES/Config&#x27;
+
+// TODO: move this to another file
+/**
+ * Type representing the structure of messages received from the worker.
+ *
+ * This type defines the structure of the messages that the main thread receives from the web worker.
+ * It includes an &#x60;action&#x60; string that identifies the type of message, and an optional &#x60;data&#x60; field
+ * which contains additional information related to the action. The shape of &#x60;data&#x60; depends on the specific action.
+ *
+ * @typedef {Object} TMessageEvent
+ * @property {string} action - The type of message or action being communicated from the worker.
+ * @property {any} [data] - Optional data associated with the action. The structure of the data depends on the action.
+ */
+type TMessageEvent &#x3D; {
+  action: string
+  data?: any
+}
+
+/**
+ * Class responsible for managing the download and processing of security master data.
+ *
+ * This class uses a web worker to handle downloading and processing data in the background.
+ * It sends messages to the worker to initialize the process, and handles messages back from the worker
+ * to update the application&#x27;s store and trigger necessary events when the download is complete.
+ *
+ * @class DownloadManager
+ */
+export default class DownloadManager {
+  /**
+   * Web Worker instance responsible for downloading and processing security master data
+   *
+   * @private
+   * @type {Worker}
+   * Handles background tasks including data fetching and processing without blocking the main thread
+   */
+  worker: Worker
+  /**
+   * Creates an instance of DownloadManager.
+   *
+   * @param {string} secMasterURL - The URL to fetch the security master data from. Must be a valid URL.
+   * @param {IConfig} config - Configuration object defining the worker&#x27;s behavior.
+   * @throws Will throw an error if the worker cannot be initialized due to invalid arguments or browser restrictions.
+   */
+  constructor(secMasterURL: string, config: IConfig) {
+    this.worker &#x3D; new Worker(new URL(&#x27;./DownloadWorker.js&#x27;, import.meta.url), {
+      type: &#x27;module&#x27;
+    })
+
+    this.worker.postMessage({ action: &#x27;INIT&#x27;, data: { config, secMasterURL } })
+    this.worker.onmessage &#x3D; this.onMessage
+    this.worker.onerror &#x3D; this.onError
+  }
+
+  /**
+   * Handles messages received from the worker.
+   *
+   * @param {MessageEvent&lt;TMessageEvent&gt;} event - The event object containing the message data from the worker.
+   * Processes the &#x27;INDEXES_CREATED&#x27; action to:
+   * - Add the processed security master data with indexes to the application&#x27;s store.
+   * - Update the security master initialization status in the application&#x27;s state.
+   * - Dispatch the &#x60;SECURITY_MASTER_INITIALIZED&#x60; event to notify the system.
+   *
+   */
+  onMessage &#x3D; (event: MessageEvent&lt;TMessageEvent&gt;) &#x3D;&gt; {
+    const { action } &#x3D; event.data
+    if (action &#x3D;&#x3D;&#x3D; &#x27;INDEXES_CREATED&#x27;) {
+      const masterDataWithIndexes &#x3D; event.data?.data
+      // TODO: kept this for initial debug - remove it later
+      addStore(masterDataWithIndexes)
+      setSecurityMasterInitializationStatus()
+      dispatchEvent(new Event(SECURITY_MASTER_INITIALIZED))
+    }
+  }
+
+  /**
+   * Handles errors from the worker.
+   *
+   * Logs the error and provides a grouped console output for easier debugging.
+   * Developers should monitor for this in case of unexpected worker behavior.
+   *
+   */
+  onError &#x3D; () &#x3D;&gt; {
+    console.group(&#x27;Error in worker&#x27;)
+    console.log(&#x27;error&#x27;)
+    console.groupEnd()
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'DownloadManager.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

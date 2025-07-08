@@ -1,0 +1,1647 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@am92/securities-utility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@am92/securities-utility documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#_getScripByScripId" title="src/secMaster.ts" ><b>_getScripByScripId</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_getSegmentDetails" title="src/secMaster.ts" ><b>_getSegmentDetails</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_mapFlattenDerivativeScriptToScript" title="src/secMaster.ts" ><b>_mapFlattenDerivativeScriptToScript</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_mapFlattenEquityScriptToScript" title="src/secMaster.ts" ><b>_mapFlattenEquityScriptToScript</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#_mapFlattenUnderlingScriptToScript" title="src/secMaster.ts" ><b>_mapFlattenUnderlingScriptToScript</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#createIndexes" title="src/Download/DownloadWorker.ts" ><b>createIndexes</b>&nbsp;&nbsp;&nbsp;(src/.../DownloadWorker.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_VALUES" title="src/index.ts" ><b>DEFAULT_VALUES</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_VALUES" title="src/Download/index.ts" ><b>DEFAULT_VALUES</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#derivativesIndexHandler" title="src/Download/indexes/derivativesIndex.ts" ><b>derivativesIndexHandler</b>&nbsp;&nbsp;&nbsp;(src/.../derivativesIndex.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#fetchOnlyHeaders" title="src/Download/DownloadWorker.ts" ><b>fetchOnlyHeaders</b>&nbsp;&nbsp;&nbsp;(src/.../DownloadWorker.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#fetchSecurityMaster" title="src/Download/DownloadWorker.ts" ><b>fetchSecurityMaster</b>&nbsp;&nbsp;&nbsp;(src/.../DownloadWorker.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getDerivativeScripsByScripId" title="src/secMaster.ts" ><b>getDerivativeScripsByScripId</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getScripByScripId" title="src/secMaster.ts" ><b>getScripByScripId</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getScripsByIsinCode" title="src/secMaster.ts" ><b>getScripsByIsinCode</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getScripsByScripIds" title="src/secMaster.ts" ><b>getScripsByScripIds</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getScriptByScriptIdIndexValue" title="src/secMaster.ts" ><b>getScriptByScriptIdIndexValue</b>&nbsp;&nbsp;&nbsp;(src/.../secMaster.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isinCodeIndexHandler" title="src/Download/indexes/isinCodeIndex.ts" ><b>isinCodeIndexHandler</b>&nbsp;&nbsp;&nbsp;(src/.../isinCodeIndex.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#scriptIdIndexHandler" title="src/Download/indexes/scriptIdIndex.ts" ><b>scriptIdIndexHandler</b>&nbsp;&nbsp;&nbsp;(src/.../scriptIdIndex.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#searchManager" title="src/Search/SearchManager.ts" ><b>searchManager</b>&nbsp;&nbsp;&nbsp;(src/.../SearchManager.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#searchStringIndexHandler" title="src/Download/indexes/searchStringIndex.ts" ><b>searchStringIndexHandler</b>&nbsp;&nbsp;&nbsp;(src/.../searchStringIndex.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#searchWorker" title="src/Search/SearchWorker.ts" ><b>searchWorker</b>&nbsp;&nbsp;&nbsp;(src/.../SearchWorker.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SECURITY_MASTER_NOT_INITIALIZED" title="src/Constants/ERROR_MESSAGE.ts" ><b>SECURITY_MASTER_NOT_INITIALIZED</b>&nbsp;&nbsp;&nbsp;(src/.../ERROR_MESSAGE.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#store" title="src/store/index.ts" ><b>store</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/secMaster.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_getScripByScripId"></a>
+                    <span class="name">
+                        <span ><b>_getScripByScripId</b></span>
+                        <a href="#_getScripByScripId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  scriptId: IScript[&#x27;scriptId&#x27;],
+  populate?: TScriptPopulate
+) &#x3D;&gt; {
+  const scriptIdIndex &#x3D; getScripIndex()
+
+  if (!scriptIdIndex) {
+    // TODO: Beautify
+    console.warn(&#x27;ScriptIdIndex not found in store&#x27;)
+    return
+  }
+
+  const locations &#x3D; scriptIdIndex[scriptId]
+
+  if (!locations) {
+    return
+  }
+
+  return getScriptByScriptIdIndexValue(locations, populate)
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves a script object by its <code>scriptId</code>, optionally populating additional properties.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_getSegmentDetails"></a>
+                    <span class="name">
+                        <span ><b>_getSegmentDetails</b></span>
+                        <a href="#_getSegmentDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(masterDataSegment: MASTER_DATA_SEGMENTS) &#x3D;&gt; {
+  const [exchange, segment, instrumentType] &#x3D; masterDataSegment.split(&#x27;_&#x27;) as [
+    IScript[&#x27;exchange&#x27;],
+    IScript[&#x27;segment&#x27;],
+    IScript[&#x27;instrumentType&#x27;]
+  ]
+  const scriptObj: Pick&lt;IScript, &#x27;segment&#x27; | &#x27;exchange&#x27; | &#x27;instrumentType&#x27;&gt; &#x3D; {
+    segment,
+    exchange,
+    instrumentType
+  }
+  return scriptObj
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Parses and retrieves the segment details from a master data segment identifier.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_mapFlattenDerivativeScriptToScript"></a>
+                    <span class="name">
+                        <span ><b>_mapFlattenDerivativeScriptToScript</b></span>
+                        <a href="#_mapFlattenDerivativeScriptToScript"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  locations: TScriptIdIndexValue
+) &#x3D;&gt; {
+  const masterData &#x3D; getMasterData()
+
+  if (!masterData) {
+    // TODO: Beautify
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
+  }
+
+  const [
+    masterDataSegment,
+    scriptIndex,
+    derivativesIndex,
+    derivativesScriptIndex
+  ] &#x3D; locations
+
+  const { segment, exchange, instrumentType } &#x3D;
+    _getSegmentDetails(masterDataSegment)
+
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataDerivatives[]
+  const flattenDerivative &#x3D; segmentData[scriptIndex]
+  const [exchangeSymbol, _, assetClass, flattenDerivativeScripts] &#x3D;
+    flattenDerivative
+  const flattenDerivativeScript &#x3D;
+    flattenDerivativeScripts[derivativesScriptIndex!]
+
+  if (flattenDerivativeScript) {
+    const [
+      scriptId,
+      odinTokenId,
+      exchangeSecurityId,
+      aslAllowed,
+      coName,
+      expiryDate,
+      strikePrice,
+      optionType,
+      lotSize,
+      tickSize,
+      nriAllowed,
+      closePrice,
+      searchable,
+      searchPriority,
+      yesterdayOpenInt,
+      maxSingleOrderQty,
+      underlying,
+      asmFlag,
+      odinLlfcSegmentId,
+      cmotsCoCode,
+      dprLow,
+      dprHigh,
+      fiftyTwoWeekLow,
+      fiftyTwoWeekHigh
+    ] &#x3D; flattenDerivativeScript
+
+    const scriptObj: IScript &#x3D; {
+      segment,
+      exchange,
+      instrumentType,
+      exchangeSymbol,
+      assetClass,
+      scriptId,
+      odinTokenId,
+      exchangeSecurityId,
+      aslAllowed,
+      coName,
+      expiryDate,
+      strikePrice,
+      optionType,
+      lotSize,
+      tickSize,
+      nriAllowed,
+      closePrice,
+      searchable,
+      searchPriority,
+      yesterdayOpenInt,
+      maxSingleOrderQty,
+      underlying,
+      asmFlag,
+      odinLlfcSegmentId,
+      cmotsCoCode,
+      dprLow,
+      dprHigh,
+      fiftyTwoWeekLow,
+      fiftyTwoWeekHigh
+    }
+
+    return scriptObj
+  }
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Maps and flattens derivative script data to a script object.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_mapFlattenEquityScriptToScript"></a>
+                    <span class="name">
+                        <span ><b>_mapFlattenEquityScriptToScript</b></span>
+                        <a href="#_mapFlattenEquityScriptToScript"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(locations: TScriptIdIndexValue) &#x3D;&gt; {
+  const masterData &#x3D; getMasterData()
+
+  if (!masterData) {
+    // TODO: Beautify
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
+  }
+
+  const [masterDataSegment, scriptIndex] &#x3D; locations
+
+  const { segment, exchange, instrumentType } &#x3D;
+    _getSegmentDetails(masterDataSegment)
+
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataEquity[]
+  const flattenEquityScript &#x3D; segmentData[scriptIndex]
+
+  const [
+    scriptId,
+    odinTokenId,
+    exchangeSecurityId,
+    aslAllowed,
+    exchangeSymbol,
+    exchangeSeries,
+    isinCode,
+    coName,
+    lotSize,
+    tickSize,
+    nriAllowed,
+    closePrice,
+    assetClass,
+    searchable,
+    searchPriority,
+    yesterdayOpenInt,
+    maxSingleOrderQty,
+    underlying,
+    asmFlag,
+    odinLlfcSegmentId,
+    cmotsCoCode,
+    dprLow,
+    dprHigh,
+    fiftyTwoWeekLow,
+    fiftyTwoWeekHigh
+  ] &#x3D; flattenEquityScript
+
+  const scriptObj: IScript &#x3D; {
+    segment,
+    exchange,
+    instrumentType,
+    scriptId,
+    odinTokenId,
+    exchangeSecurityId,
+    aslAllowed,
+    exchangeSymbol,
+    exchangeSeries,
+    isinCode,
+    coName,
+    lotSize,
+    tickSize,
+    nriAllowed,
+    closePrice,
+    assetClass,
+    searchable,
+    searchPriority,
+    yesterdayOpenInt,
+    maxSingleOrderQty,
+    underlying,
+    asmFlag,
+    odinLlfcSegmentId,
+    cmotsCoCode,
+    dprLow,
+    dprHigh,
+    fiftyTwoWeekLow,
+    fiftyTwoWeekHigh
+  }
+
+  return scriptObj
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Maps and flattens equity script data to a script object.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_mapFlattenUnderlingScriptToScript"></a>
+                    <span class="name">
+                        <span ><b>_mapFlattenUnderlingScriptToScript</b></span>
+                        <a href="#_mapFlattenUnderlingScriptToScript"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(locations: TScriptIdIndexValue) &#x3D;&gt; {
+  const masterData &#x3D; getMasterData()
+
+  if (!masterData) {
+    // TODO: Beautify
+    console.warn(&#x27;masterData not found in store&#x27;)
+    return
+  }
+
+  const [masterDataSegment, scriptIndex] &#x3D; locations
+
+  const { segment, exchange, instrumentType } &#x3D;
+    _getSegmentDetails(masterDataSegment)
+
+  const segmentData &#x3D; masterData[masterDataSegment] as TMasterDataUnderlying[]
+  const flattenEquityScript &#x3D; segmentData[scriptIndex]
+
+  const [
+    scriptId,
+    odinTokenId,
+    exchangeSecurityId,
+    aslAllowed,
+    exchangeSymbol,
+    coName,
+    lotSize,
+    tickSize,
+    nriAllowed,
+    closePrice,
+    assetClass,
+    searchable,
+    searchPriority,
+    yesterdayOpenInt,
+    underlying,
+    asmFlag,
+    odinLlfcSegmentId,
+    cmotsCoCode,
+    dprLow,
+    dprHigh,
+    fiftyTwoWeekLow,
+    fiftyTwoWeekHigh
+  ] &#x3D; flattenEquityScript
+
+  const scriptObj: IScript &#x3D; {
+    segment,
+    exchange,
+    instrumentType,
+    scriptId,
+    odinTokenId,
+    exchangeSecurityId,
+    aslAllowed,
+    exchangeSymbol,
+    coName,
+    lotSize,
+    tickSize,
+    nriAllowed,
+    closePrice,
+    assetClass,
+    searchable,
+    searchPriority,
+    yesterdayOpenInt,
+    underlying,
+    asmFlag,
+    odinLlfcSegmentId,
+    cmotsCoCode,
+    dprLow,
+    dprHigh,
+    fiftyTwoWeekLow,
+    fiftyTwoWeekHigh
+  }
+
+  return scriptObj
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Maps and flattens underlying script data to a script object.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDerivativeScripsByScripId"></a>
+                    <span class="name">
+                        <span ><b>getDerivativeScripsByScripId</b></span>
+                        <a href="#getDerivativeScripsByScripId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  scriptId: IScript[&#x27;scriptId&#x27;],
+  derivativeType: &#x27;FUTURES&#x27; | &#x27;OPTIONS&#x27; | &#x27;BOTH&#x27; &#x3D; &#x27;BOTH&#x27;,
+  populate?: TScriptPopulate
+) &#x3D;&gt; {
+  const script &#x3D; getScripByScripId(scriptId, populate)
+
+  if (!script) {
+    return {}
+  }
+
+  const { underlying, isinCode, exchange, instrumentType } &#x3D; script
+
+  let underlyingId: IScript[&#x27;underlying&#x27;] &#x3D; underlying
+  if (!underlyingId) {
+    if (exchange &#x3D;&#x3D;&#x3D; &#x27;NSE&#x27; &amp;&amp; instrumentType &#x3D;&#x3D;&#x3D; &#x27;EQUITY&#x27;) {
+      underlyingId &#x3D; scriptId
+    }
+
+    if (!isinCode) {
+      return {}
+    }
+
+    const isinCodeIndex &#x3D; getIsinIndex()
+    if (!isinCodeIndex) {
+      // TODO: Beautify
+      console.warn(&#x27;isinCodeIndex not found in store&#x27;)
+      return {}
+    }
+
+    if (exchange &#x3D;&#x3D;&#x3D; &#x27;BSE&#x27;) {
+      const scriptIds &#x3D; isinCodeIndex &amp;&amp; isinCodeIndex[isinCode]
+      const nseScriptId &#x3D; scriptIds.filter(
+        scriptIdentifier &#x3D;&gt; scriptIdentifier !&#x3D;&#x3D; scriptId
+      )[0]
+      underlyingId &#x3D; nseScriptId
+    }
+  }
+
+  const derivativesIndex &#x3D; getDerivativeIndex()
+  if (!derivativesIndex) {
+    // TODO: Beautify
+    console.warn(&#x27;derivativesIndex not found in store&#x27;)
+    return {}
+  }
+
+  const derivativesScriptIdsObj &#x3D;
+    (underlyingId &amp;&amp; derivativesIndex[underlyingId]) || null
+
+  if (derivativesScriptIdsObj) {
+    if (derivativeType &#x3D;&#x3D;&#x3D; &#x27;BOTH&#x27;) {
+      return {
+        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate),
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
+    } else if (derivativeType &#x3D;&#x3D;&#x3D; &#x27;FUTURES&#x27;) {
+      return {
+        FUTURES: getScripsByScripIds(derivativesScriptIdsObj.FUTURES, populate)
+      }
+    } else {
+      return {
+        OPTIONS: getScripsByScripIds(derivativesScriptIdsObj.OPTIONS, populate)
+      }
+    }
+  }
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves derivative scripts associated with a specific <code>scriptId</code>, filtered by derivative type.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScripByScripId"></a>
+                    <span class="name">
+                        <span ><b>getScripByScripId</b></span>
+                        <a href="#getScripByScripId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>memoize(_getScripByScripId, 100)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Memoized version of <code>_getScripByScripId</code> for optimized retrieval.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScripsByIsinCode"></a>
+                    <span class="name">
+                        <span ><b>getScripsByIsinCode</b></span>
+                        <a href="#getScripsByIsinCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  isinCode: IScript[&#x27;isinCode&#x27;],
+  populate?: TScriptPopulate
+) &#x3D;&gt; {
+  const isinCodeIndex &#x3D; getIsinIndex()
+
+  if (!isinCode) {
+    return []
+  }
+
+  if (!isinCodeIndex) {
+    // TODO: Beautify
+    console.warn(&#x27;isinCodeIndex not found in store&#x27;)
+    return
+  }
+
+  const scriptIds &#x3D; isinCodeIndex[isinCode]
+  return getScripsByScripIds(scriptIds, populate)
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves scripts by their ISIN code, optionally populating additional properties.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScripsByScripIds"></a>
+                    <span class="name">
+                        <span ><b>getScripsByScripIds</b></span>
+                        <a href="#getScripsByScripIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  scriptIds: IScript[&#x27;scriptId&#x27;][],
+  populate?: TScriptPopulate
+) &#x3D;&gt; {
+  if (!scriptIds) {
+    return []
+  }
+
+  const scripts &#x3D; scriptIds
+    .map(scriptId &#x3D;&gt; getScripByScripId(scriptId, populate))
+    .filter(script &#x3D;&gt; script !&#x3D;&#x3D; undefined)
+  return scripts
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves multiple scripts by their <code>scriptId</code>s, optionally populating additional properties.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getScriptByScriptIdIndexValue"></a>
+                    <span class="name">
+                        <span ><b>getScriptByScriptIdIndexValue</b></span>
+                        <a href="#getScriptByScriptIdIndexValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  scriptIdIndexValue: TScriptIdIndexValue,
+  populate: TScriptPopulate &#x3D; []
+): IScript | undefined | Pick&lt;IScript, TScriptPopulate[number]&gt; &#x3D;&gt; {
+  const { instrumentType } &#x3D; _getSegmentDetails(scriptIdIndexValue[0])
+
+  let script: IScript | undefined
+  if (instrumentType &#x3D;&#x3D;&#x3D; &#x27;EQUITY&#x27;) {
+    script &#x3D; _mapFlattenEquityScriptToScript(scriptIdIndexValue)
+  } else if (instrumentType &#x3D;&#x3D;&#x3D; &#x27;UNDERLYING&#x27;) {
+    script &#x3D; _mapFlattenUnderlingScriptToScript(scriptIdIndexValue)
+  } else {
+    script &#x3D; _mapFlattenDerivativeScriptToScript(scriptIdIndexValue)
+  }
+
+  if (populate.length &amp;&amp; script) {
+    const scriptObj &#x3D; Object.fromEntries(
+      populate.filter(key &#x3D;&gt; key in script).map(key &#x3D;&gt; [key, script[key]])
+    ) as Pick&lt;IScript, keyof IScript&gt;
+    return scriptObj
+  }
+
+  return script
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Retrieves a script object by its index value, optionally populating additional properties.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/DownloadWorker.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createIndexes"></a>
+                    <span class="name">
+                        <span ><b>createIndexes</b></span>
+                        <a href="#createIndexes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  masterData: TMasterData,
+  options?: IConfig
+): {
+  scriptIdIndex: TScriptIdIndex
+  isinCodeIndex: TIsinCodeIndex
+  derivativesIndex: TDerivativesIndex
+  searchStringIndex?: TSearchStringIndex
+} &#x3D;&gt; {
+  let indexHandlers: TIndexHandlers &#x3D; [
+    scriptIdIndexHandler(),
+    isinCodeIndexHandler(),
+    derivativesIndexHandler()
+  ]
+
+  if (options &amp;&amp; options.requireSearchModule) {
+    indexHandlers.push(
+      searchStringIndexHandler() as TIndexHandler&lt;TSearchStringIndex&gt;
+    )
+  }
+
+  for (const SEC_SEGMENT of SEC_SEGMENTS) {
+    const secMasterSegmentKey &#x3D; SEC_SEGMENT.name as MASTER_DATA_SEGMENTS
+    const segmentData &#x3D; masterData[secMasterSegmentKey]
+
+    if (!segmentData) continue
+
+    if (
+      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &#x27;FLAT_EQUITY&#x27; ||
+      SEC_SEGMENT.type &#x3D;&#x3D;&#x3D; &#x27;FLAT_UNDERLYING&#x27;
+    ) {
+      const totalData &#x3D; segmentData.length
+      for (let itemIndex &#x3D; 0; itemIndex &lt; totalData; itemIndex++) {
+        const itemData &#x3D; segmentData[itemIndex]
+        indexHandlers.map(indexHandler &#x3D;&gt;
+          indexHandler?.addRow(secMasterSegmentKey, itemIndex, itemData)
+        )
+      }
+    } else {
+      const totalData &#x3D; segmentData.length
+      for (let itemIndex &#x3D; 0; itemIndex &lt; totalData; itemIndex++) {
+        const itemData &#x3D; segmentData[itemIndex] as TMasterDataDerivatives
+        const derivativeItems &#x3D; itemData[3]
+        const derivativeItemsLength &#x3D; derivativeItems.length
+
+        for (
+          let derivativeItemIndex &#x3D; 0;
+          derivativeItemIndex &lt; derivativeItemsLength;
+          derivativeItemIndex++
+        ) {
+          const derivativeItem &#x3D; derivativeItems[derivativeItemIndex]
+          indexHandlers.map(indexHandler &#x3D;&gt;
+            indexHandler?.addRow(
+              secMasterSegmentKey,
+              itemIndex,
+              itemData,
+              derivativeItemIndex,
+              derivativeItem
+            )
+          )
+        }
+      }
+    }
+  }
+
+  const indexesArray &#x3D; indexHandlers.map(indexHandler &#x3D;&gt;
+    indexHandler?.getIndex()
+  )
+  const scriptIdIndex &#x3D; indexesArray[0] as TScriptIdIndex
+  const isinCodeIndex &#x3D; indexesArray[1] as TIsinCodeIndex
+  const derivativesIndex &#x3D; indexesArray[2] as TDerivativesIndex
+  const searchStringIndex &#x3D; indexesArray[3] as TSearchStringIndex | undefined
+
+  const indexes &#x3D; {
+    scriptIdIndex,
+    isinCodeIndex,
+    derivativesIndex,
+    searchStringIndex
+  }
+
+  return indexes
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates indexes for different segments of the security master data based on configuration options.</p>
+<p>This function creates various indexes like <code>scriptIdIndex</code>, <code>isinCodeIndex</code>, <code>derivativesIndex</code>,
+and optionally <code>searchStringIndex</code>, depending on the <code>requireSearchModule</code> flag in the configuration.
+It loops through the segments of the security master data, processes each item, and adds it to the corresponding index.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchOnlyHeaders"></a>
+                    <span class="name">
+                        <span ><b>fetchOnlyHeaders</b></span>
+                        <a href="#fetchOnlyHeaders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>async (secMasterURL: string) &#x3D;&gt; {
+  try {
+    const response &#x3D; await fetch(secMasterURL, {
+      method: &#x27;HEAD&#x27;,
+      mode: &#x27;no-cors&#x27;,
+      headers: {
+        &#x27;Cache-Control&#x27;: &#x27;no-cache&#x27;,
+        Pragma: &#x27;no-cache&#x27;,
+        Expires: &#x27;0&#x27;
+      }
+    })
+
+    if (response) {
+      return response?.headers
+    }
+  } catch (err) {
+    console.log(err, &#x27;header errors&#x27;)
+  }
+  return null
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fetches the headers from the provided security master URL without retrieving the entire file.</p>
+<p>This function uses a &#39;HEAD&#39; request to fetch only the headers of the file. It helps in
+checking if the file has been modified or not by comparing the content hash from the headers.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchSecurityMaster"></a>
+                    <span class="name">
+                        <span ><b>fetchSecurityMaster</b></span>
+                        <a href="#fetchSecurityMaster"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>async (
+  secMasterURL: string,
+  config: IConfig
+) &#x3D;&gt; {
+  const headers &#x3D; await fetchOnlyHeaders(secMasterURL)
+  const contentHash &#x3D; getContentHashFromHeaders(headers)
+
+  // NOTE: variable to check if the file content is updated or same
+  const isContentHashSame &#x3D; await checkIfContentHashIsSame(contentHash)
+
+  // check if response is cached
+  const cacheResponse &#x3D; await getCacheResponse(secMasterURL)
+
+  if (isContentHashSame &amp;&amp; cacheResponse) {
+    generateIndexesAndPostMessage(cacheResponse, config)
+    return
+  }
+
+  const response &#x3D; await fetch(secMasterURL, {
+    method: &#x27;GET&#x27;
+  })
+
+  const { headers: currentHeaders &#x3D; {} } &#x3D; response
+  const currentContentHash &#x3D; getContentHashFromHeaders(currentHeaders)
+
+  const SEC_MASTER_ARRAY: TMasterData &#x3D; await response.json()
+  setCacheResponse(secMasterURL, SEC_MASTER_ARRAY)
+  setCacheContentHash(currentContentHash)
+
+  generateIndexesAndPostMessage(SEC_MASTER_ARRAY, config)
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Fetches the security master data from the provided URL, checks the file&#39;s content hash,
+and updates the cache if the file content has changed.</p>
+<p>If the content hash is the same and the response is already cached, it returns the cached response.
+Otherwise, it fetches the new data, updates the cache, creates indexes, and sends the data back to the main thread.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/index.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_VALUES"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_VALUES</b></span>
+                        <a href="#DEFAULT_VALUES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IConfig.html" target="_self" >IConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  requireSearchModule: false,
+  requireSocketModule: false
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuration object defining the default values for system modules.</p>
+<ul>
+<li><code>requireSearchModule</code>: Specifies whether the search module is required (default: <code>false</code>).</li>
+<li><code>requireSocketModule</code>: Specifies whether the socket module is required (default: <code>false</code>).</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/index.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_VALUES"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_VALUES</b></span>
+                        <a href="#DEFAULT_VALUES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ requireSearchModule: false }</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Default configuration values for the module</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/indexes/derivativesIndex.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="derivativesIndexHandler"></a>
+                    <span class="name">
+                        <span ><b>derivativesIndexHandler</b></span>
+                        <a href="#derivativesIndexHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): TIndexHandler&lt;TDerivativesIndex&gt; &#x3D;&gt; {
+  const index: TDerivativesIndex &#x3D; {}
+
+  const addRow &#x3D; (
+    segmentKey: MASTER_DATA_SEGMENTS,
+    itemIndex: number,
+    itemData:
+      | TMasterDataEquity
+      | TMasterDataDerivatives
+      | TMasterDataUnderlying,
+    derivativeItemIndex?: number,
+    derivativeItem?: TMasterDataDerivativesScript
+  ) &#x3D;&gt; {
+    // if not Derivative return
+    if (!derivativeItem) {
+      return
+    }
+
+    let item: TMasterDataDerivatives &#x3D; itemData as TMasterDataDerivatives
+
+    const underlying &#x3D; item[1]
+    const scriptId &#x3D; derivativeItem![0]
+    const isAslAllowed &#x3D; derivativeItem![3]
+
+    // if script is not allowed don&#x27;t add to any index
+    if (isAslAllowed &#x3D;&#x3D;&#x3D; &#x27;N&#x27; || !underlying) {
+      return
+    }
+
+    if (!index[underlying]) {
+      index[underlying] &#x3D; {
+        FUTURES: [],
+        OPTIONS: []
+      }
+    }
+
+    const [_exchange, _segment, instrumentType] &#x3D; segmentKey.split(&#x27;_&#x27;)
+    const key: &#x27;FUTURES&#x27; | &#x27;OPTIONS&#x27; | undefined &#x3D;
+      (FUTURES.includes(instrumentType) &amp;&amp; &#x27;FUTURES&#x27;) ||
+      (OPTIONS.includes(instrumentType) &amp;&amp; &#x27;OPTIONS&#x27;) ||
+      undefined
+
+    if (key) {
+      index[underlying][key].push(scriptId)
+    }
+  }
+
+  const getIndex &#x3D; () &#x3D;&gt; index
+
+  return {
+    addRow,
+    getIndex
+  }
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles indexing of derivatives data by organizing futures and options
+based on their underlying assets. This is useful for quick lookups and
+categorization of derivative scripts.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/indexes/isinCodeIndex.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isinCodeIndexHandler"></a>
+                    <span class="name">
+                        <span ><b>isinCodeIndexHandler</b></span>
+                        <a href="#isinCodeIndexHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): TIndexHandler&lt;TIsinCodeIndex&gt; &#x3D;&gt; {
+  const index: TIsinCodeIndex &#x3D; {}
+
+  const addRow &#x3D; (
+    segmentKey: MASTER_DATA_SEGMENTS,
+    itemIndex: number,
+    itemData:
+      | TMasterDataEquity
+      | TMasterDataDerivatives
+      | TMasterDataUnderlying,
+    derivativeItemIndex?: number,
+    derivativeItem?: TMasterDataDerivativesScript
+  ) &#x3D;&gt; {
+    // Derivative &amp; Unerlying does not have isincode
+    if (derivativeItem || segmentKey.includes(&#x27;UNDERLYING&#x27;)) {
+      return
+    }
+
+    let item: TMasterDataEquity &#x3D; itemData as TMasterDataEquity
+
+    const scriptId &#x3D; item[0]
+    const isAslAllowed &#x3D; item[3]
+    const isinCode &#x3D; item[6]
+    const isValidIsincode &#x3D; isinCode &amp;&amp; isinCode !&#x3D;&#x3D; &#x27;0&#x27;
+
+    // if script is not allowed don&#x27;t add to any index
+    if (isAslAllowed &#x3D;&#x3D;&#x3D; &#x27;N&#x27; || !isValidIsincode) {
+      return
+    }
+
+    if (!index[isinCode]) {
+      index[isinCode] &#x3D; []
+    }
+
+    index[isinCode].push(scriptId)
+  }
+
+  const getIndex &#x3D; () &#x3D;&gt; index
+
+  return {
+    addRow,
+    getIndex
+  }
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles indexing of ISIN codes by associating them with their corresponding
+script IDs. This index is specifically designed for equity data and excludes
+derivatives and underlying segments.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/indexes/scriptIdIndex.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scriptIdIndexHandler"></a>
+                    <span class="name">
+                        <span ><b>scriptIdIndexHandler</b></span>
+                        <a href="#scriptIdIndexHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): TIndexHandler&lt;TScriptIdIndex&gt; &#x3D;&gt; {
+  const index: TScriptIdIndex &#x3D; {}
+
+  const addRow &#x3D; (
+    segmentKey: MASTER_DATA_SEGMENTS,
+    itemIndex: number,
+    itemData:
+      | TMasterDataEquity
+      | TMasterDataDerivatives
+      | TMasterDataUnderlying,
+    derivativeItemIndex?: number,
+    derivativeItem?: TMasterDataDerivativesScript
+  ) &#x3D;&gt; {
+    let item:
+      | TMasterDataEquity
+      | TMasterDataUnderlying
+      | TMasterDataDerivativesScript &#x3D;
+      (derivativeItem &amp;&amp; derivativeItem) ||
+      (itemData as TMasterDataEquity | TMasterDataUnderlying)
+
+    const scriptId &#x3D; item[0]
+
+    const map: TScriptIdIndexValue &#x3D; [segmentKey, itemIndex]
+
+    if (derivativeItemIndex) {
+      map.push(3, derivativeItemIndex)
+    }
+
+    index[scriptId] &#x3D; map
+  }
+
+  const getIndex &#x3D; () &#x3D;&gt; index
+
+  return {
+    addRow,
+    getIndex
+  }
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles indexing of script IDs by associating them with metadata such as segment keys,
+item indices, and derivative item indices (if applicable). This allows quick lookup
+of script metadata based on their IDs.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Search/SearchManager.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchManager"></a>
+                    <span class="name">
+                        <span ><b>searchManager</b></span>
+                        <a href="#searchManager"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new SearchManager()</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Singleton instance of SearchManager exported for use across app.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Download/indexes/searchStringIndex.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchStringIndexHandler"></a>
+                    <span class="name">
+                        <span ><b>searchStringIndexHandler</b></span>
+                        <a href="#searchStringIndexHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(): TIndexHandler&lt;TSearchStringIndex&gt; &#x3D;&gt; {
+    const index: TSearchStringIndex &#x3D; {}
+
+    const addRow &#x3D; (
+      segmentKey: MASTER_DATA_SEGMENTS,
+      itemIndex: number,
+      itemData:
+        | TMasterDataEquity
+        | TMasterDataDerivatives
+        | TMasterDataUnderlying,
+      derivativeItemIndex?: number,
+      derivativeItem?: TMasterDataDerivativesScript
+    ) &#x3D;&gt; {
+      let exchangeSymbol: IScript[&#x27;exchangeSymbol&#x27;]
+      let searchString: IScript[&#x27;searchable&#x27;]
+      let searchPriority: IScript[&#x27;searchPriority&#x27;]
+      let map: TScriptIdIndexValue
+      let isAslAllowed: IScript[&#x27;aslAllowed&#x27;]
+
+      if (segmentKey.includes(&#x27;EQUITY&#x27;)) {
+        const item &#x3D; itemData as TMasterDataEquity
+        exchangeSymbol &#x3D; item[4]
+        isAslAllowed &#x3D; item[3]
+        searchString &#x3D; item[13]
+        searchPriority &#x3D; item[14]
+        map &#x3D; [segmentKey, itemIndex]
+      } else if (segmentKey.includes(&#x27;UNDERLYING&#x27;)) {
+        const item &#x3D; itemData as TMasterDataUnderlying
+        exchangeSymbol &#x3D; item[4]
+        isAslAllowed &#x3D; item[3]
+        searchString &#x3D; item[11]
+        searchPriority &#x3D; item[12]
+        map &#x3D; [segmentKey, itemIndex]
+      } else {
+        const item &#x3D; itemData as TMasterDataDerivatives
+        exchangeSymbol &#x3D; item[0]
+        isAslAllowed &#x3D; derivativeItem![3]
+        searchString &#x3D; derivativeItem![12]
+        searchPriority &#x3D; derivativeItem![13]
+        map &#x3D; [segmentKey, itemIndex, 3, derivativeItemIndex!]
+      }
+
+      if (isAslAllowed &#x3D;&#x3D;&#x3D; &#x27;N&#x27;) return
+
+      const searchObj &#x3D; {
+        exchangeSymbol,
+        searchString,
+        searchPriority,
+        data: map
+      }
+
+      const chunkIndex &#x3D; getChunkIndex(searchPriority)
+      if (!index[chunkIndex]) {
+        index[chunkIndex] &#x3D; []
+      }
+      index[chunkIndex].push(searchObj)
+    }
+
+    const getIndex &#x3D; () &#x3D;&gt; index
+
+    return {
+      addRow,
+      getIndex
+    }
+  }</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Handles indexing of searchable strings for scripts, organizing them by
+search priority into chunked groups. This is useful for efficient search
+and retrieval operations.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Search/SearchWorker.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchWorker"></a>
+                    <span class="name">
+                        <span ><b>searchWorker</b></span>
+                        <a href="#searchWorker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SearchWorker</code>
+
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/Constants/ERROR_MESSAGE.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SECURITY_MASTER_NOT_INITIALIZED"></a>
+                    <span class="name">
+                        <span ><b>SECURITY_MASTER_NOT_INITIALIZED</b></span>
+                        <a href="#SECURITY_MASTER_NOT_INITIALIZED"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;Security master isn&#x27;t downloaded or initialized&quot;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/store/index.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="store"></a>
+                    <span class="name">
+                        <span ><b>store</b></span>
+                        <a href="#store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IStore.html" target="_self" >IStore</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Description placeholder</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
