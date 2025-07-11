@@ -110,10 +110,10 @@ export const MAX_FUSE_CHUNK_SIZE = 20000
 export const SEARCH_OPTIONS = {
   keys: ['searchString', 'exchangeSymbol'],
   limit: 40, // don't return more results than you need!
-  threshold: -999, // don't return bad results,
+  threshold: -9999, // don't return bad results,
   scoreFn: (a: any) => {
-    const searchStringScore = (a[0] ? a[0].score : -1000) * 0.1
-    const exchangeSymbolScore = (a[1] ? a[1].score : -1000) * 0.9
+    const searchStringScore = (a[0] ? a[0].score : -10000) * 0.1
+    const exchangeSymbolScore = (a[1] ? a[1].score : -10000) * 0.9
     return searchStringScore + exchangeSymbolScore
   }
 }

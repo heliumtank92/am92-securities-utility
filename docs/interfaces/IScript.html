@@ -1,0 +1,1909 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@am92/securities-utility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@am92/securities-utility documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  IScript</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/TYPES/Script.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing a financial script, which contains various details related to a specific instrument in a given exchange and segment.</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#aslAllowed" 
+>
+                                            aslAllowed
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#asmFlag" 
+>
+                                            asmFlag
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#assetClass" 
+>
+                                            assetClass
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#closePrice" 
+>
+                                            closePrice
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#cmotsCoCode" 
+>
+                                            cmotsCoCode
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#coName" 
+>
+                                            coName
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#dprHigh" 
+>
+                                            dprHigh
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#dprLow" 
+>
+                                            dprLow
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#exchange" 
+>
+                                            exchange
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#exchangeSecurityId" 
+>
+                                            exchangeSecurityId
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#exchangeSeries" 
+>
+                                            exchangeSeries
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#exchangeSymbol" 
+>
+                                            exchangeSymbol
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#expiryDate" 
+>
+                                            expiryDate
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#fiftyTwoWeekHigh" 
+>
+                                            fiftyTwoWeekHigh
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#fiftyTwoWeekLow" 
+>
+                                            fiftyTwoWeekLow
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#instrumentType" 
+>
+                                            instrumentType
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#isinCode" 
+>
+                                            isinCode
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#lotSize" 
+>
+                                            lotSize
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#maxSingleOrderQty" 
+>
+                                            maxSingleOrderQty
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#nriAllowed" 
+>
+                                            nriAllowed
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#odinLlfcSegmentId" 
+>
+                                            odinLlfcSegmentId
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#odinTokenId" 
+>
+                                            odinTokenId
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#optionType" 
+>
+                                            optionType
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#scriptId" 
+>
+                                            scriptId
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#searchable" 
+>
+                                            searchable
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#searchPriority" 
+>
+                                            searchPriority
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#segment" 
+>
+                                            segment
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#strikePrice" 
+>
+                                            strikePrice
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#tickSize" 
+>
+                                            tickSize
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#underlying" 
+>
+                                            underlying
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#yesterdayOpenInt" 
+>
+                                            yesterdayOpenInt
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="aslAllowed"></a>
+                                        <span class="name "><b>aslAllowed</b>
+                                            <a href="#aslAllowed">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>aslAllowed:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if additional surveillance measures are applicable to this script.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="asmFlag"></a>
+                                        <span class="name "><b>asmFlag</b>
+                                            <a href="#asmFlag">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>asmFlag:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if the instrument is subject to additional surveillance measures.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="assetClass"></a>
+                                        <span class="name "><b>assetClass</b>
+                                            <a href="#assetClass">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>assetClass:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The classification of the instrument&#39;s asset type (e.g., Equity, Derivatives, Commodities).</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="closePrice"></a>
+                                        <span class="name "><b>closePrice</b>
+                                            <a href="#closePrice">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>closePrice:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The closing price of the instrument from the previous trading day.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="cmotsCoCode"></a>
+                                        <span class="name "><b>cmotsCoCode</b>
+                                            <a href="#cmotsCoCode">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>cmotsCoCode:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The identifier for the company in the CMOTS system.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="coName"></a>
+                                        <span class="name "><b>coName</b>
+                                            <a href="#coName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>coName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The company name associated with the financial instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="dprHigh"></a>
+                                        <span class="name "><b>dprHigh</b>
+                                            <a href="#dprHigh">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>dprHigh:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The upper limit of the daily price range for the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="dprLow"></a>
+                                        <span class="name "><b>dprLow</b>
+                                            <a href="#dprLow">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>dprLow:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The lower limit of the daily price range for the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="exchange"></a>
+                                        <span class="name "><b>exchange</b>
+                                            <a href="#exchange">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>exchange:         <code><a href="../miscellaneous/typealiases.html#TExchange" target="_self" >TExchange</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#TExchange" target="_self" >TExchange</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The exchange where the financial instrument is traded (e.g., NSE, BSE, MCX).</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="exchangeSecurityId"></a>
+                                        <span class="name "><b>exchangeSecurityId</b>
+                                            <a href="#exchangeSecurityId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>exchangeSecurityId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier for the instrument as defined by the exchange.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="exchangeSeries"></a>
+                                        <span class="name "><b>exchangeSeries</b>
+                                            <a href="#exchangeSeries">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>exchangeSeries:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The series code of the instrument on the exchange (e.g., EQ, BE).</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="exchangeSymbol"></a>
+                                        <span class="name "><b>exchangeSymbol</b>
+                                            <a href="#exchangeSymbol">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>exchangeSymbol:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The symbol used to represent the instrument on the exchange.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="expiryDate"></a>
+                                        <span class="name "><b>expiryDate</b>
+                                            <a href="#expiryDate">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>expiryDate:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The expiration date of the derivative contract.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="fiftyTwoWeekHigh"></a>
+                                        <span class="name "><b>fiftyTwoWeekHigh</b>
+                                            <a href="#fiftyTwoWeekHigh">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>fiftyTwoWeekHigh:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The highest price of the instrument in the last 52 weeks.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="fiftyTwoWeekLow"></a>
+                                        <span class="name "><b>fiftyTwoWeekLow</b>
+                                            <a href="#fiftyTwoWeekLow">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>fiftyTwoWeekLow:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The lowest price of the instrument in the last 52 weeks.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="instrumentType"></a>
+                                        <span class="name "><b>instrumentType</b>
+                                            <a href="#instrumentType">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>instrumentType:         <code><a href="../miscellaneous/typealiases.html#TInstrumentType" target="_self" >TInstrumentType</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#TInstrumentType" target="_self" >TInstrumentType</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The type of the financial instrument (e.g., EQUITY, FUTSTK, OPTIDX).</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="isinCode"></a>
+                                        <span class="name "><b>isinCode</b>
+                                            <a href="#isinCode">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>isinCode:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The International Securities Identification Number (ISIN) for the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="lotSize"></a>
+                                        <span class="name "><b>lotSize</b>
+                                            <a href="#lotSize">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>lotSize:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The standard trading lot size for the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="maxSingleOrderQty"></a>
+                                        <span class="name "><b>maxSingleOrderQty</b>
+                                            <a href="#maxSingleOrderQty">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>maxSingleOrderQty:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The maximum quantity allowed for a single order of this instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="nriAllowed"></a>
+                                        <span class="name "><b>nriAllowed</b>
+                                            <a href="#nriAllowed">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>nriAllowed:     <code>string | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if the instrument is available for Non-Resident Indian (NRI) investors.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="odinLlfcSegmentId"></a>
+                                        <span class="name "><b>odinLlfcSegmentId</b>
+                                            <a href="#odinLlfcSegmentId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>odinLlfcSegmentId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The Odin-specific identifier for the segment to which the instrument belongs.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="odinTokenId"></a>
+                                        <span class="name "><b>odinTokenId</b>
+                                            <a href="#odinTokenId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>odinTokenId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The identifier used for mapping the script within the Odin trading system.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="optionType"></a>
+                                        <span class="name "><b>optionType</b>
+                                            <a href="#optionType">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>optionType:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The type of option (e.g., CALL, PUT) for the derivative contract.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="scriptId"></a>
+                                        <span class="name "><b>scriptId</b>
+                                            <a href="#scriptId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>scriptId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier for the script within the system.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="searchable"></a>
+                                        <span class="name "><b>searchable</b>
+                                            <a href="#searchable">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>searchable:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>A string value used for indexing and searching the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="searchPriority"></a>
+                                        <span class="name "><b>searchPriority</b>
+                                            <a href="#searchPriority">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>searchPriority:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The priority value assigned to this instrument for search results, with lower numbers indicating higher priority.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="segment"></a>
+                                        <span class="name "><b>segment</b>
+                                            <a href="#segment">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>segment:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The segment identifier of the financial instrument, specifying its type and categorization within the market (e.g., NSE_EQ_EQUITY).</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="strikePrice"></a>
+                                        <span class="name "><b>strikePrice</b>
+                                            <a href="#strikePrice">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>strikePrice:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The strike price for the derivative contract, applicable to options.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="tickSize"></a>
+                                        <span class="name "><b>tickSize</b>
+                                            <a href="#tickSize">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>tickSize:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The minimum price movement allowed for the instrument.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="underlying"></a>
+                                        <span class="name "><b>underlying</b>
+                                            <a href="#underlying">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>underlying:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The identifier for the underlying asset associated with the instrument, if applicable.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="yesterdayOpenInt"></a>
+                                        <span class="name "><b>yesterdayOpenInt</b>
+                                            <a href="#yesterdayOpenInt">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>yesterdayOpenInt:     <code>number | null</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>number | null</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The open interest value for the instrument from the previous trading day.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export type TInstrumentType &#x3D;
+  | &#x27;EQUITY&#x27;
+  | &#x27;FUTSTK&#x27;
+  | &#x27;FUTIDX&#x27;
+  | &#x27;OPTIDX&#x27;
+  | &#x27;OPTSTK&#x27;
+  | &#x27;FUTCUR&#x27;
+  | &#x27;OPTCUR&#x27;
+  | &#x27;OPTFUT&#x27;
+  | &#x27;FUTCOM&#x27;
+  | &#x27;UNDERLYING&#x27;
+
+/**
+ * Represents the possible exchanges where financial instruments can be traded.
+ *
+ * @type {TExchange}
+ * @enum
+ * @readonly
+ */
+export type TExchange &#x3D; &#x27;NSE&#x27; | &#x27;BSE&#x27; | &#x27;MCX&#x27; | &#x27;NCDEX&#x27;
+
+/**
+ * Interface representing a financial script, which contains various details related to a specific instrument in a given exchange and segment.
+ *
+ * @interface IScript
+ */
+export interface IScript {
+  /**
+   * The segment identifier of the financial instrument, specifying its type and categorization within the market (e.g., NSE_EQ_EQUITY).
+   *
+   * @type {string}
+   */
+  segment: string
+  /**
+   * The exchange where the financial instrument is traded (e.g., NSE, BSE, MCX).
+   *
+   * @type {TExchange}
+   */
+  exchange: TExchange
+  /**
+   * The type of the financial instrument (e.g., EQUITY, FUTSTK, OPTIDX).
+   *
+   * @type {TInstrumentType}
+   */
+  instrumentType: TInstrumentType
+
+  /**
+   * The unique identifier for the script within the system.
+   *
+   * @type {number}
+   */
+  scriptId: number // TODO: Change spelling in our code
+  /**
+   * The identifier used for mapping the script within the Odin trading system.
+   *
+   * @type {number}
+   */
+  odinTokenId: number
+  /**
+   * Indicates if additional surveillance measures are applicable to this script.
+   *
+   * @type {string}
+   */
+  aslAllowed: string
+  /**
+   * The company name associated with the financial instrument.
+   *
+   * @type {string}
+   */
+  coName: string // TODO: Change spelling in our code
+  /**
+   * Indicates if the instrument is available for Non-Resident Indian (NRI) investors.
+   *
+   * @type {(string | null)}
+   */
+  nriAllowed: string | null
+  /**
+   * The symbol used to represent the instrument on the exchange.
+   *
+   * @type {(string | null)}
+   */
+  exchangeSymbol: string | null
+  /**
+   * The classification of the instrument&#x27;s asset type (e.g., Equity, Derivatives, Commodities).
+   *
+   * @type {(string | null)}
+   */
+  assetClass: string | null
+  /**
+   * The priority value assigned to this instrument for search results, with lower numbers indicating higher priority.
+   *
+   * @type {(number | null)}
+   */
+  searchPriority: number | null
+
+  /**
+   * The unique identifier for the instrument as defined by the exchange.
+   *
+   * @type {number}
+   */
+  exchangeSecurityId: number
+  /**
+   * The standard trading lot size for the instrument.
+   *
+   * @type {(number | null)}
+   */
+  lotSize: number | null // TODO: Change spelling in our code
+  /**
+   * The minimum price movement allowed for the instrument.
+   *
+   * @type {(number | null)}
+   */
+  tickSize: number | null // TODO: Change spelling in our code
+  /**
+   * The closing price of the instrument from the previous trading day.
+   *
+   * @type {(number | null)}
+   */
+  closePrice: number | null // TODO: Change spelling in our code
+  /**
+   * A string value used for indexing and searching the instrument.
+   *
+   * @type {string}
+   */
+  searchable: string
+  /**
+   * The open interest value for the instrument from the previous trading day.
+   *
+   * @type {(number | null)}
+   */
+  yesterdayOpenInt: number | null
+  /**
+   * The identifier for the underlying asset associated with the instrument, if applicable.
+   *
+   * @type {(number | null)}
+   */
+  underlying: number | null // TODO: Change spelling in our code
+  /**
+   * Indicates if the instrument is subject to additional surveillance measures.
+   *
+   * @type {(string | null)}
+   */
+  asmFlag: string | null // TODO: Change spelling in our code
+  /**
+   * The Odin-specific identifier for the segment to which the instrument belongs.
+   *
+   * @type {number}
+   */
+  odinLlfcSegmentId: number // TODO: Change spelling in our code
+  /**
+   * The identifier for the company in the CMOTS system.
+   *
+   * @type {number}
+   */
+  cmotsCoCode: number // TODO: Change spelling in our code
+  /**
+   * The lower limit of the daily price range for the instrument.
+   *
+   * @type {number}
+   */
+  dprLow: number // TODO: Change spelling in our code
+  /**
+   * The upper limit of the daily price range for the instrument.
+   *
+   * @type {number}
+   */
+  dprHigh: number // TODO: Change spelling in our code
+  /**
+   * The lowest price of the instrument in the last 52 weeks.
+   *
+   * @type {number}
+   */
+  fiftyTwoWeekLow: number // TODO: Change spelling in our code
+  /**
+   * The highest price of the instrument in the last 52 weeks.
+   *
+   * @type {number}
+   */
+  fiftyTwoWeekHigh: number // TODO: Change spelling in our code
+
+  // Equity &amp; Derivatives Extra fields
+  /**
+   * The maximum quantity allowed for a single order of this instrument.
+   *
+   * @type {?(number | null)}
+   */
+  maxSingleOrderQty?: number | null
+
+  // Equity Extra fields
+  /**
+   * The series code of the instrument on the exchange (e.g., EQ, BE).
+   *
+   * @type {?string}
+   */
+  exchangeSeries?: string
+  /**
+   * The International Securities Identification Number (ISIN) for the instrument.
+   *
+   * @type {?(string | null)}
+   */
+  isinCode?: string | null
+
+  // Derivatives Extra fields
+  /**
+   * The expiration date of the derivative contract.
+   *
+   * @type {?string}
+   */
+  expiryDate?: string
+  /**
+   * The strike price for the derivative contract, applicable to options.
+   *
+   * @type {?number}
+   */
+  strikePrice?: number
+  /**
+   * The type of option (e.g., CALL, PUT) for the derivative contract.
+   *
+   * @type {?string}
+   */
+  optionType?: string
+}
+
+/**
+ * A type representing the keys of the IScript interface that are used to populate or extract specific fields of a script.
+ *
+ * @type {TScriptPopulate}
+ * @example
+ * const fieldsToPopulate: TScriptPopulate &#x3D; [&#x27;segment&#x27;, &#x27;exchange&#x27;, &#x27;instrumentType&#x27;];
+ */
+export type TScriptPopulate &#x3D; (keyof IScript)[]
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'IScript.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

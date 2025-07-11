@@ -1,0 +1,661 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@am92/securities-utility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@am92/securities-utility documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  IStore</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/TYPES/Store.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface representing the store that holds various indices and master data.
+This is used for efficient data access and retrieval.</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Represents the complete master data for all security segments, organized by the MASTER_DATA_SEGMENTS enum.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps script IDs to their corresponding indices in the master data segments.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Organizes derivative script IDs by type (futures or options) for efficient access.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Provides a searchable index for chunked master data, including search strings, priorities, and corresponding exchange symbols.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps ISIN codes to their associated script IDs for efficient lookup.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates whether the security master data has been fully initialized.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { STORE_KEYS } from &#x27;../Constants/STORE_KEYS&#x27;
+import { IScript } from &#x27;./Script&#x27;
+
+/**
+ * Enum representing the different segments of master data for securities.
+ * These segments correspond to various asset classes (equity, derivatives, etc.)
+ * on different exchanges (NSE, BSE, MCX, NCDEX).
+ *
+ * @enum {string}
+ * @readonly
+ */
+export enum MASTER_DATA_SEGMENTS {
+  NSE_EQ_EQUITY &#x3D; &#x27;NSE_EQ_EQUITY&#x27;,
+  BSE_EQ_EQUITY &#x3D; &#x27;BSE_EQ_EQUITY&#x27;,
+  NSE_FO_FUTSTK &#x3D; &#x27;NSE_FO_FUTSTK&#x27;,
+  NSE_FO_FUTIDX &#x3D; &#x27;NSE_FO_FUTIDX&#x27;,
+  NSE_FO_OPTIDX &#x3D; &#x27;NSE_FO_OPTIDX&#x27;,
+  NSE_FO_OPTSTK &#x3D; &#x27;NSE_FO_OPTSTK&#x27;,
+  NSE_CURR_FUTCUR &#x3D; &#x27;NSE_CURR_FUTCUR&#x27;,
+  NSE_CURR_OPTCUR &#x3D; &#x27;NSE_CURR_OPTCUR&#x27;,
+  MCX_COMM_OPTFUT &#x3D; &#x27;MCX_COMM_OPTFUT&#x27;,
+  MCX_COMM_FUTCOM &#x3D; &#x27;MCX_COMM_FUTCOM&#x27;,
+  NCDEX_COMM_OPTFUT &#x3D; &#x27;NCDEX_COMM_OPTFUT&#x27;,
+  NCDEX_COMM_FUTCOM &#x3D; &#x27;NCDEX_COMM_FUTCOM&#x27;,
+  NSE_CURR_UNDERLYING &#x3D; &#x27;NSE_CURR_UNDERLYING&#x27;,
+  MCX_COMM_UNDERLYING &#x3D; &#x27;MCX_COMM_UNDERLYING&#x27;,
+  NCDEX_COMM_UNDERLYING &#x3D; &#x27;NCDEX_COMM_UNDERLYING&#x27;,
+  NSE_EQ_UNDERLYING &#x3D; &#x27;NSE_EQ_UNDERLYING&#x27;,
+  BSE_EQ_UNDERLYING &#x3D; &#x27;BSE_EQ_UNDERLYING&#x27;
+}
+
+/**
+ * Type for the keys of the MASTER_DATA_SEGMENTS enum.
+ * Represents the valid segment keys in the master data.
+ *
+ * @type {TMasterDataSegmentKeys}
+ */
+export type TMasterDataSegmentKeys &#x3D; keyof typeof MASTER_DATA_SEGMENTS
+
+/**
+ * Type representing the script ID from the IScript interface.
+ *
+ * @type {TScriptId}
+ */
+type TScriptId &#x3D; IScript[&#x27;scriptId&#x27;]
+
+/**
+ * Type representing the structure of master data for equity securities.
+ * It contains various properties related to equity scripts such as scriptId, coName, lotSize, and more.
+ *
+ * @type {TMasterDataEquity}
+ */
+export type TMasterDataEquity &#x3D; [
+  TScriptId,
+  IScript[&#x27;odinTokenId&#x27;],
+  IScript[&#x27;exchangeSecurityId&#x27;],
+  IScript[&#x27;aslAllowed&#x27;],
+  IScript[&#x27;exchangeSymbol&#x27;],
+  IScript[&#x27;exchangeSeries&#x27;],
+  IScript[&#x27;isinCode&#x27;],
+  IScript[&#x27;coName&#x27;],
+  IScript[&#x27;lotSize&#x27;],
+  IScript[&#x27;tickSize&#x27;],
+  IScript[&#x27;nriAllowed&#x27;],
+  IScript[&#x27;closePrice&#x27;],
+  IScript[&#x27;assetClass&#x27;],
+  IScript[&#x27;searchable&#x27;],
+  IScript[&#x27;searchPriority&#x27;],
+  IScript[&#x27;yesterdayOpenInt&#x27;],
+  IScript[&#x27;maxSingleOrderQty&#x27;],
+  IScript[&#x27;underlying&#x27;],
+  IScript[&#x27;asmFlag&#x27;],
+  IScript[&#x27;odinLlfcSegmentId&#x27;],
+  IScript[&#x27;cmotsCoCode&#x27;],
+  IScript[&#x27;dprLow&#x27;],
+  IScript[&#x27;dprHigh&#x27;],
+  IScript[&#x27;fiftyTwoWeekLow&#x27;],
+  IScript[&#x27;fiftyTwoWeekHigh&#x27;]
+]
+
+/**
+ * Type representing the structure of master data for underlying securities.
+ * It contains similar properties as equity but tailored for underlying securities.
+ *
+ * @type {TMasterDataUnderlying}
+ */
+export type TMasterDataUnderlying &#x3D; [
+  TScriptId,
+  IScript[&#x27;odinTokenId&#x27;],
+  IScript[&#x27;exchangeSecurityId&#x27;],
+  IScript[&#x27;aslAllowed&#x27;],
+  IScript[&#x27;exchangeSymbol&#x27;],
+  IScript[&#x27;coName&#x27;],
+  IScript[&#x27;lotSize&#x27;],
+  IScript[&#x27;tickSize&#x27;],
+  IScript[&#x27;nriAllowed&#x27;],
+  IScript[&#x27;closePrice&#x27;],
+  IScript[&#x27;assetClass&#x27;],
+  IScript[&#x27;searchable&#x27;],
+  IScript[&#x27;searchPriority&#x27;],
+  IScript[&#x27;yesterdayOpenInt&#x27;],
+  IScript[&#x27;underlying&#x27;],
+  IScript[&#x27;asmFlag&#x27;],
+  IScript[&#x27;odinLlfcSegmentId&#x27;],
+  IScript[&#x27;cmotsCoCode&#x27;],
+  IScript[&#x27;dprLow&#x27;],
+  IScript[&#x27;dprHigh&#x27;],
+  IScript[&#x27;fiftyTwoWeekLow&#x27;],
+  IScript[&#x27;fiftyTwoWeekHigh&#x27;]
+]
+
+/**
+ * Type representing the structure of master data for derivatives scripts.
+ * Includes specific properties like expiryDate, strikePrice, and optionType for derivative instruments.
+ *
+ * @type {TMasterDataDerivativesScript}
+ */
+export type TMasterDataDerivativesScript &#x3D; [
+  TScriptId,
+  IScript[&#x27;odinTokenId&#x27;],
+  IScript[&#x27;exchangeSecurityId&#x27;],
+  IScript[&#x27;aslAllowed&#x27;],
+  IScript[&#x27;coName&#x27;],
+  IScript[&#x27;expiryDate&#x27;],
+  IScript[&#x27;strikePrice&#x27;],
+  IScript[&#x27;optionType&#x27;],
+  IScript[&#x27;lotSize&#x27;],
+  IScript[&#x27;tickSize&#x27;],
+  IScript[&#x27;nriAllowed&#x27;],
+  IScript[&#x27;closePrice&#x27;],
+  IScript[&#x27;searchable&#x27;],
+  IScript[&#x27;searchPriority&#x27;],
+  IScript[&#x27;yesterdayOpenInt&#x27;],
+  IScript[&#x27;maxSingleOrderQty&#x27;],
+  IScript[&#x27;underlying&#x27;],
+  IScript[&#x27;asmFlag&#x27;],
+  IScript[&#x27;odinLlfcSegmentId&#x27;],
+  IScript[&#x27;cmotsCoCode&#x27;],
+  IScript[&#x27;dprLow&#x27;],
+  IScript[&#x27;dprHigh&#x27;],
+  IScript[&#x27;fiftyTwoWeekLow&#x27;],
+  IScript[&#x27;fiftyTwoWeekHigh&#x27;]
+]
+
+/**
+ * Represents the data structure for derivatives in the system.
+ * This type includes information about the exchange symbol, underlying asset,
+ * asset class, and an array of derivative scripts associated with the derivative.
+ */
+export type TMasterDataDerivatives &#x3D; [
+  IScript[&#x27;exchangeSymbol&#x27;],
+  IScript[&#x27;underlying&#x27;],
+  IScript[&#x27;assetClass&#x27;],
+  TMasterDataDerivativesScript[]
+]
+
+/**
+ * Type representing master data for derivative instruments, including a list of derivative scripts.
+ *
+ * @type {TMasterDataDerivatives}
+ */
+export type TMasterData &#x3D; {
+  [MASTER_DATA_SEGMENTS.NSE_EQ_EQUITY]?: TMasterDataEquity[]
+  [MASTER_DATA_SEGMENTS.BSE_EQ_EQUITY]?: TMasterDataEquity[]
+  [MASTER_DATA_SEGMENTS.NSE_FO_FUTSTK]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_FO_FUTIDX]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_FO_OPTIDX]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_FO_OPTSTK]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_CURR_FUTCUR]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_CURR_OPTCUR]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.MCX_COMM_OPTFUT]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.MCX_COMM_FUTCOM]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NCDEX_COMM_OPTFUT]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NCDEX_COMM_FUTCOM]?: TMasterDataDerivatives[]
+  [MASTER_DATA_SEGMENTS.NSE_CURR_UNDERLYING]?: TMasterDataUnderlying[]
+  [MASTER_DATA_SEGMENTS.MCX_COMM_UNDERLYING]?: TMasterDataUnderlying[]
+  [MASTER_DATA_SEGMENTS.NCDEX_COMM_UNDERLYING]?: TMasterDataUnderlying[]
+  [MASTER_DATA_SEGMENTS.NSE_EQ_UNDERLYING]?: TMasterDataUnderlying[]
+  [MASTER_DATA_SEGMENTS.BSE_EQ_UNDERLYING]?: TMasterDataUnderlying[]
+}
+
+/**
+ * Type representing the index for script IDs. This is used to store a reference to the master data segment
+ * and the index value (could be a single or multi-level index).
+ *
+ * @type {TScriptIdIndexValue}
+ */
+export type TScriptIdIndexValue &#x3D;
+  | [MASTER_DATA_SEGMENTS, number]
+  | [MASTER_DATA_SEGMENTS, number, number, number]
+
+/**
+ * Type representing an index of script IDs.
+ * Maps each script ID to its corresponding index value.
+ *
+ * @type {TScriptIdIndex}
+ */
+export type TScriptIdIndex &#x3D; {
+  [key: TScriptId]: TScriptIdIndexValue
+}
+
+/**
+ * Type representing an index for derivatives, including both futures and options.
+ * It organizes derivative script IDs by type (FUTURES and OPTIONS).
+ *
+ * @type {TDerivativesIndex}
+ */
+export type TDerivativesIndex &#x3D; {
+  [key: TScriptId]: {
+    FUTURES: TScriptId[]
+    OPTIONS: TScriptId[]
+  }
+}
+
+/**
+ * Type representing a search chunk identifier.
+ * This is used for efficient indexing and retrieval of search results.
+ *
+ * @type {TSearchChunkId}
+ */
+export type TSearchChunkId &#x3D; number
+
+/**
+ * Type representing a searchable index for chunked data.
+ * It maps each search chunk to its relevant search string, data, search priority, and exchange symbol.
+ *
+ * @type {TSearchStringIndex}
+ */
+export type TSearchStringIndex &#x3D; {
+  [key: TSearchChunkId]: {
+    searchString: IScript[&#x27;searchable&#x27;]
+    data: TScriptIdIndexValue
+    searchPriority: IScript[&#x27;searchPriority&#x27;]
+    exchangeSymbol: IScript[&#x27;exchangeSymbol&#x27;]
+  }[]
+}
+
+/**
+ * Type representing the ISIN code for a security.
+ * This is used for indexing securities by their ISIN code.
+ *
+ * @type {TIsinCode}
+ */
+type TIsinCode &#x3D; string // IScript[&#x27;isinCode&#x27;] // TODO: Figure out typescript to remove undefined or null
+
+/**
+ * Type representing an index of ISIN codes.
+ * Maps each ISIN code to a list of script IDs associated with it.
+ *
+ * @type {TIsinCodeIndex}
+ */
+export type TIsinCodeIndex &#x3D; {
+  [key: TIsinCode]: TScriptId[]
+}
+
+/**
+ * Interface representing the store that holds various indices and master data.
+ * This is used for efficient data access and retrieval.
+ *
+ * @interface IStore
+ */
+export interface IStore {
+  /**
+   * Represents the complete master data for all security segments, organized by the MASTER_DATA_SEGMENTS enum.
+   *
+   * @type {?TMasterData}
+   */
+  [STORE_KEYS.MASTER_DATA]?: TMasterData
+  /**
+   * Maps script IDs to their corresponding indices in the master data segments.
+   *
+   * @type {?TScriptIdIndex}
+   */
+  [STORE_KEYS.SCRIPT_ID_INDEX]?: TScriptIdIndex
+  /**
+   * Organizes derivative script IDs by type (futures or options) for efficient access.
+   *
+   * @type {?TDerivativesIndex}
+   */
+  [STORE_KEYS.DERIVATIVES_INDEX]?: TDerivativesIndex
+  /**
+   * Provides a searchable index for chunked master data, including search strings, priorities, and corresponding exchange symbols.
+   *
+   * @type {?TSearchStringIndex}
+   */
+  [STORE_KEYS.SEARCH_STRING_INDEX]?: TSearchStringIndex
+  /**
+   * Maps ISIN codes to their associated script IDs for efficient lookup.
+   *
+   * @type {?TIsinCodeIndex}
+   */
+  [STORE_KEYS.ISIN_CODE_INDEX]?: TIsinCodeIndex
+  /**
+   * Indicates whether the security master data has been fully initialized.
+   *
+   * @type {?boolean}
+   */
+  [STORE_KEYS.IS_SECURITY_MASTER_INITIALIZED]?: boolean
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'IStore.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
